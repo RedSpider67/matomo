@@ -32,6 +32,7 @@ function collectPasswordInputs(el: HTMLElement): Array<HTMLInputElementWithAutoC
 
 function setupAutoClear(el: HTMLInputElementWithAutoClear, delay: number) {
   let timeoutId: number | undefined;
+  let intervalId: number | undefined;
   let lastValue = el.value;
 
   const clearValue = (): void => {
@@ -47,11 +48,35 @@ function setupAutoClear(el: HTMLInputElementWithAutoClear, delay: number) {
   const inputListener = () => resetTimer();
   const changeListener = () => resetTimer();
 
+  // Forward declared so `teardown` can remove the listener registered below.
+  let pageHideListener: (() => void) | undefined;
+
+  // Tears everything down and drops the retained value copy. `unmounted` does
+  // not run on full-page navigation, so `pagehide` covers that case too.
+  const teardown = (clearField: boolean): void => {
+    if (timeoutId) clearTimeout(timeoutId);
+    if (intervalId) clearInterval(intervalId);
+    el.removeEventListener('input', inputListener);
+    el.removeEventListener('change', changeListener);
+    if (pageHideListener) {
+      window.removeEventListener('pagehide', pageHideListener);
+    }
+    delete el.dataset.autoClearEnabled;
+    delete el.onUmounted;
+    lastValue = '';
+    if (clearField) {
+      el.value = '';
+    }
+  };
+
+  pageHideListener = (): void => teardown(true);
+
   el.addEventListener('input', inputListener);
   el.addEventListener('change', changeListener);
   el.dataset.autoClearEnabled = 'true';
+  window.addEventListener('pagehide', pageHideListener);
 
-  const intervalId = setInterval(() => {
+  intervalId = setInterval(() => {
     if (el.value !== lastValue) {
       lastValue = el.value;
       resetTimer();
@@ -60,11 +85,7 @@ function setupAutoClear(el: HTMLInputElementWithAutoClear, delay: number) {
 
   el.onUmounted = {
     cleanup() {
-      clearTimeout(timeoutId);
-      clearInterval(intervalId);
-      el.removeEventListener('input', inputListener);
-      el.removeEventListener('change', changeListener);
-      delete el.dataset.autoClearEnabled;
+      teardown(false);
     },
   };
 }
