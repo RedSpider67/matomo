@@ -31,8 +31,13 @@ function collectPasswordInputs(el: HTMLElement): Array<HTMLInputElementWithAutoC
 }
 
 function setupAutoClear(el: HTMLInputElementWithAutoClear, delay: number) {
-  let timeoutId: number | undefined;
-  let intervalId: number | undefined;
+  // Never arm the same input twice.
+  if (el.dataset.autoClearEnabled === 'true') {
+    return;
+  }
+
+  let timeoutId: ReturnType<typeof setTimeout> | undefined;
+  let intervalId: ReturnType<typeof setInterval> | undefined;
   let lastValue = el.value;
 
   const clearValue = (): void => {
@@ -49,13 +54,17 @@ function setupAutoClear(el: HTMLInputElementWithAutoClear, delay: number) {
   const changeListener = () => resetTimer();
 
   // Forward declared so `teardown` can remove the listener registered below.
-  let pageHideListener: (() => void) | undefined;
+  let pageHideListener: ((event: PageTransitionEvent) => void) | undefined;
 
   // Tears everything down and drops the retained value copy. `unmounted` does
   // not run on full-page navigation, so `pagehide` covers that case too.
   const teardown = (clearField: boolean): void => {
-    if (timeoutId) clearTimeout(timeoutId);
-    if (intervalId) clearInterval(intervalId);
+    if (timeoutId !== undefined) {
+      clearTimeout(timeoutId);
+    }
+    if (intervalId !== undefined) {
+      clearInterval(intervalId);
+    }
     el.removeEventListener('input', inputListener);
     el.removeEventListener('change', changeListener);
     if (pageHideListener) {
@@ -65,11 +74,22 @@ function setupAutoClear(el: HTMLInputElementWithAutoClear, delay: number) {
     delete el.onUmounted;
     lastValue = '';
     if (clearField) {
+      // No `input` event dispatched on purpose: the page is unloading, so
+      // re-triggering the timer or v-model updates would be pointless.
       el.value = '';
     }
   };
 
-  pageHideListener = (): void => teardown(true);
+  pageHideListener = (event: PageTransitionEvent): void => {
+    if (event.persisted) {
+      // Page is kept for the back/forward cache and may be restored, so drop
+      // the retained value but leave the watcher armed for the restored page.
+      el.value = '';
+      lastValue = '';
+      return;
+    }
+    teardown(true);
+  };
 
   el.addEventListener('input', inputListener);
   el.addEventListener('change', changeListener);
@@ -103,7 +123,6 @@ export default {
     targets.forEach((e: HTMLInputElementWithAutoClear) => {
       if (e.onUmounted && typeof e.onUmounted.cleanup === 'function') {
         e.onUmounted.cleanup();
-        delete e.onUmounted;
       }
     });
   },
