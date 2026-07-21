@@ -30,7 +30,7 @@ function firePageHide(persisted: boolean): void {
 describe('CoreHome/AutoClearPassword', () => {
   afterEach(() => {
     document.body.innerHTML = '';
-    jest.useRealTimers();
+    vi.useRealTimers();
   });
 
   it('marks the input as enabled on mount', () => {
@@ -59,7 +59,7 @@ describe('CoreHome/AutoClearPassword', () => {
     // ... but the directive stays armed so the restored page is still protected.
     expect(el.dataset.autoClearEnabled).toBe('true');
 
-    const removeSpy = jest.spyOn(window, 'removeEventListener');
+    const removeSpy = vi.spyOn(window, 'removeEventListener');
     firePageHide(false);
     expect(removeSpy).toHaveBeenCalledWith('pagehide', expect.any(Function));
     expect(el.dataset.autoClearEnabled).toBeUndefined();
@@ -76,18 +76,18 @@ describe('CoreHome/AutoClearPassword', () => {
   });
 
   it('does not clear the field after teardown (timers/listeners removed)', () => {
-    jest.useFakeTimers();
+    vi.useFakeTimers();
     const el = mountInput();
 
     directive.unmounted(el);
-    jest.advanceTimersByTime(5000);
+    vi.advanceTimersByTime(5000);
 
     expect(el.value).toBe('secret');
   });
 
   it('does not arm the same input twice', () => {
     const el = mountInput();
-    const addSpy = jest.spyOn(window, 'addEventListener');
+    const addSpy = vi.spyOn(window, 'addEventListener');
 
     directive.mounted(el, { value: { delay: 1 } });
 
