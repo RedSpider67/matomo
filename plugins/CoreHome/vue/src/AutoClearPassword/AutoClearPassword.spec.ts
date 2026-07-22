@@ -32,10 +32,8 @@ function firePageHide(persisted: boolean): void {
 
 describe('CoreHome/AutoClearPassword', () => {
   afterEach(() => {
-    // The directive is mounted manually here, so removing the DOM node does not
-    // fire Vue's `unmounted` hook. Tear each input down explicitly so its
-    // polling interval and global `pagehide` listener do not leak into later
-    // tests. Teardown is idempotent, so inputs already cleaned up are skipped.
+    // Manual mount never fires `unmounted`; tear down so intervals and the
+    // pagehide listener don't leak between tests (idempotent).
     mounted.splice(0).forEach((el) => directive.unmounted(el));
     document.body.innerHTML = '';
     vi.useRealTimers();

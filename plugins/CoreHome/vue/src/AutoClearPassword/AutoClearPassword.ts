@@ -42,9 +42,8 @@ function setupAutoClear(el: HTMLInputElementWithAutoClear, delay: number) {
 
   const clearValue = (): void => {
     el.value = '';
-    // Notify both plain listeners (`input`) and our Vue password Field, which
-    // syncs its bound `v-model` on `change`. Without the `change` event the
-    // model keeps the old value and a later render writes it back into the DOM.
+    // `change` syncs the Vue password Field's v-model; `input` covers plain
+    // listeners. Without it a later render writes the old value back.
     el.dispatchEvent(new Event('input'));
     el.dispatchEvent(new Event('change'));
   };
@@ -86,11 +85,8 @@ function setupAutoClear(el: HTMLInputElementWithAutoClear, delay: number) {
 
   pageHideListener = (event: PageTransitionEvent): void => {
     if (event.persisted) {
-      // Page is kept for the back/forward cache and may be restored, so drop the
-      // retained value (DOM and the bound v-model) but leave the watcher armed
-      // for the restored page. Unlike a real navigation the page is not
-      // discarded here, so clearing the model matters: otherwise a render after
-      // restore would write the retained value back into the input.
+      // Kept for the back/forward cache and may be restored: clear value and
+      // model (a restore render would otherwise repopulate it) but stay armed.
       clearValue();
       lastValue = '';
       return;
