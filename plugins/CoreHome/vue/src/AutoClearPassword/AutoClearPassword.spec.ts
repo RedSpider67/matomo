@@ -51,11 +51,18 @@ describe('CoreHome/AutoClearPassword', () => {
 
   it('keeps the watcher armed but drops the value when entering the bfcache', () => {
     const el = mountInput();
+    // Vue's password Field mirrors the DOM value into its v-model on `change`,
+    // so the bfcache branch must emit it or the retained model repopulates the
+    // input on the next render after restore.
+    const changeSpy = vi.fn();
+    el.addEventListener('change', changeSpy);
 
     firePageHide(true);
 
     // Value is dropped ...
     expect(el.value).toBe('');
+    // ... the bound model is told to clear too ...
+    expect(changeSpy).toHaveBeenCalledTimes(1);
     // ... but the directive stays armed so the restored page is still protected.
     expect(el.dataset.autoClearEnabled).toBe('true');
 
@@ -63,6 +70,24 @@ describe('CoreHome/AutoClearPassword', () => {
     firePageHide(false);
     expect(removeSpy).toHaveBeenCalledWith('pagehide', expect.any(Function));
     expect(el.dataset.autoClearEnabled).toBeUndefined();
+  });
+
+  it('syncs the bound model when clearing after inactivity', () => {
+    vi.useFakeTimers();
+    const el = mountInput('');
+    const changeSpy = vi.fn();
+    el.addEventListener('change', changeSpy);
+
+    // Simulate the user typing a password, which arms the inactivity timer.
+    el.value = 'secret';
+    el.dispatchEvent(new Event('input'));
+
+    // Let the inactivity timer elapse (delay is 1s in the test harness); the
+    // extra time absorbs the 300ms value poll re-arming the timer once.
+    vi.advanceTimersByTime(5000);
+
+    expect(el.value).toBe('');
+    expect(changeSpy).toHaveBeenCalled();
   });
 
   it('cleans up on unmount without clearing the field value', () => {
