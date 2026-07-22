@@ -14,12 +14,15 @@ interface DirectiveLike {
 
 const directive = AutoClearPassword as unknown as DirectiveLike;
 
+const mounted: HTMLInputElement[] = [];
+
 function mountInput(value = 'secret'): HTMLInputElement {
   const el = document.createElement('input');
   el.type = 'password';
   el.value = value;
   document.body.appendChild(el);
   directive.mounted(el, { value: { delay: 1 } });
+  mounted.push(el);
   return el;
 }
 
@@ -29,6 +32,11 @@ function firePageHide(persisted: boolean): void {
 
 describe('CoreHome/AutoClearPassword', () => {
   afterEach(() => {
+    // The directive is mounted manually here, so removing the DOM node does not
+    // fire Vue's `unmounted` hook. Tear each input down explicitly so its
+    // polling interval and global `pagehide` listener do not leak into later
+    // tests. Teardown is idempotent, so inputs already cleaned up are skipped.
+    mounted.splice(0).forEach((el) => directive.unmounted(el));
     document.body.innerHTML = '';
     vi.useRealTimers();
   });
