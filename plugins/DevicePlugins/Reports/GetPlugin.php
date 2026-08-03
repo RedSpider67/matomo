@@ -40,6 +40,14 @@ class GetPlugin extends Base
         return $documentation;
     }
 
+    public function getMetricNamesToExcludeFromReportRatioColumns(): array
+    {
+        // this report already shows a visits percentage, but computed against the visits of browsers
+        // able to detect plugins, see DevicePlugins\API::getPlugin(). A percentage of the report total
+        // would contradict it, and the report is displayed without totals in the UI anyway.
+        return array('nb_visits');
+    }
+
     public function configureView(ViewDataTable $view)
     {
         $view->config->show_flatten_table = false;

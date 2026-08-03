@@ -61,22 +61,30 @@
 	<columns>
 		<label>Country</label>
 		<nb_visits>Visits</nb_visits>
+		<nb_visits_report_ratio>Visits (%)</nb_visits_report_ratio>
 		<nb_uniq_visitors>Unique visitors</nb_uniq_visitors>
+		<nb_uniq_visitors_report_ratio>Unique visitors (%)</nb_uniq_visitors_report_ratio>
 		<nb_actions>Actions</nb_actions>
+		<nb_actions_report_ratio>Actions (%)</nb_actions_report_ratio>
 		<nb_users>Users</nb_users>
 		<nb_actions_per_visit>Actions per Visit</nb_actions_per_visit>
 		<avg_time_on_site>Avg. Time on Website</avg_time_on_site>
 		<bounce_rate>Bounce Rate</bounce_rate>
 		<revenue>Revenue</revenue>
+		<revenue_report_ratio>Revenue (%)</revenue_report_ratio>
 	</columns>
 	<reportData>
 		<row>
 			<label>Poland</label>
 			<nb_uniq_visitors>1</nb_uniq_visitors>
+			<nb_uniq_visitors_report_ratio>50%</nb_uniq_visitors_report_ratio>
 			<nb_visits>2</nb_visits>
+			<nb_visits_report_ratio>66.7%</nb_visits_report_ratio>
 			<nb_actions>9</nb_actions>
+			<nb_actions_report_ratio>69.2%</nb_actions_report_ratio>
 			<nb_users>0</nb_users>
 			<revenue>$3,111.11</revenue>
+			<revenue_report_ratio>99.7%</revenue_report_ratio>
 			<nb_actions_per_visit>4.5</nb_actions_per_visit>
 			<avg_time_on_site>00:39:01</avg_time_on_site>
 			<bounce_rate>0%</bounce_rate>
@@ -84,10 +92,14 @@
 		<row>
 			<label>France</label>
 			<nb_uniq_visitors>1</nb_uniq_visitors>
+			<nb_uniq_visitors_report_ratio>50%</nb_uniq_visitors_report_ratio>
 			<nb_visits>1</nb_visits>
+			<nb_visits_report_ratio>33.3%</nb_visits_report_ratio>
 			<nb_actions>4</nb_actions>
+			<nb_actions_report_ratio>30.8%</nb_actions_report_ratio>
 			<nb_users>0</nb_users>
 			<revenue>$10</revenue>
+			<revenue_report_ratio>0.3%</revenue_report_ratio>
 			<nb_actions_per_visit>4</nb_actions_per_visit>
 			<avg_time_on_site>00:12:02</avg_time_on_site>
 			<bounce_rate>0%</bounce_rate>

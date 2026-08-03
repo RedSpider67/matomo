@@ -15,6 +15,7 @@ use Piwik\Config;
 use Piwik\Container\StaticContainer;
 use Piwik\Date;
 use Piwik\Log;
+use Piwik\Metrics;
 use Piwik\Option;
 use Piwik\Period;
 use Piwik\Piwik;
@@ -351,7 +352,45 @@ class ScheduledReports extends \Piwik\Plugin
                 $processedReport['metadata'] = $metadata;
                 $processedReport['columns'] = $columns;
             }
+
+            self::removeRedundantPercentageColumns($processedReport);
         }
+    }
+
+    /**
+     * Removes the percentage column a report computes itself, eg. '%&nbsp;Visits', when the same metric
+     * already shows the percentage of the report total, eg. 'Visits (%)'. Both would otherwise be
+     * displayed next to each other.
+     *
+     * @param array $processedReport
+     */
+    private static function removeRedundantPercentageColumns(&$processedReport): void
+    {
+        $suffixLength    = strlen(Metrics::REPORT_RATIO_COLUMN_SUFFIX);
+        $columnsToRemove = array();
+
+        foreach (array_keys($processedReport['columns']) as $columnName) {
+            if (!str_ends_with($columnName, Metrics::REPORT_RATIO_COLUMN_SUFFIX)) {
+                continue;
+            }
+
+            $percentageColumn = substr($columnName, 0, -$suffixLength) . '_percentage';
+
+            if (isset($processedReport['columns'][$percentageColumn])) {
+                $columnsToRemove[] = $percentageColumn;
+            }
+        }
+
+        if (empty($columnsToRemove)) {
+            return;
+        }
+
+        foreach ($columnsToRemove as $columnToRemove) {
+            unset($processedReport['columns'][$columnToRemove]);
+        }
+
+        // the CSV and TSV renderers build their header from the columns of the report data itself
+        $processedReport['reportData']->filter('ColumnDelete', array($columnsToRemove));
     }
 
     public function getRendererInstance(&$reportRenderer, $reportType, $outputType, $report)

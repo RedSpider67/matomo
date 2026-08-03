@@ -61,27 +61,32 @@
 	<columns>
 		<label>Page Title</label>
 		<nb_hits>Pageviews</nb_hits>
+		<nb_hits_report_ratio>Pageviews (%)</nb_hits_report_ratio>
 		<bounce_rate>Bounce Rate</bounce_rate>
 	</columns>
 	<reportData>
 		<row>
 			<label>Checkout</label>
 			<nb_hits>1</nb_hits>
+			<nb_hits_report_ratio>25%</nb_hits_report_ratio>
 			<bounce_rate>100%</bounce_rate>
 		</row>
 		<row>
 			<label> incredible title!</label>
 			<nb_hits>1</nb_hits>
+			<nb_hits_report_ratio>25%</nb_hits_report_ratio>
 			<bounce_rate>0%</bounce_rate>
 		</row>
 		<row>
 			<label> Looking at homepage (again)...</label>
 			<nb_hits>1</nb_hits>
+			<nb_hits_report_ratio>25%</nb_hits_report_ratio>
 			<bounce_rate>0%</bounce_rate>
 		</row>
 		<row>
 			<label> Second page view - should be registered as URL</label>
 			<nb_hits>1</nb_hits>
+			<nb_hits_report_ratio>25%</nb_hits_report_ratio>
 			<bounce_rate>0%</bounce_rate>
 		</row>
 	</reportData>

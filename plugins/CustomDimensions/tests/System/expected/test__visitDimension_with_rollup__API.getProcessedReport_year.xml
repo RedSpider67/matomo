@@ -47,7 +47,9 @@
 	<columns>
 		<label>MyName1</label>
 		<nb_visits>Visits</nb_visits>
+		<nb_visits_report_ratio>Visits (%)</nb_visits_report_ratio>
 		<nb_actions>Actions</nb_actions>
+		<nb_actions_report_ratio>Actions (%)</nb_actions_report_ratio>
 		<avg_time_on_site>Avg. Time on Website</avg_time_on_site>
 		<bounce_rate>Bounce Rate</bounce_rate>
 		<nb_actions_per_visit>Actions per Visit</nb_actions_per_visit>
@@ -56,7 +58,9 @@
 		<row>
 			<label>value1</label>
 			<nb_visits>1</nb_visits>
+			<nb_visits_report_ratio>33.3%</nb_visits_report_ratio>
 			<nb_actions>1</nb_actions>
+			<nb_actions_report_ratio>16.7%</nb_actions_report_ratio>
 			<nb_actions_per_visit>1</nb_actions_per_visit>
 			<avg_time_on_site>00:00:01</avg_time_on_site>
 			<bounce_rate>100%</bounce_rate>
@@ -64,7 +68,9 @@
 		<row>
 			<label>value5 1</label>
 			<nb_visits>1</nb_visits>
+			<nb_visits_report_ratio>33.3%</nb_visits_report_ratio>
 			<nb_actions>4</nb_actions>
+			<nb_actions_report_ratio>66.7%</nb_actions_report_ratio>
 			<nb_actions_per_visit>4</nb_actions_per_visit>
 			<avg_time_on_site>00:18:02</avg_time_on_site>
 			<bounce_rate>0%</bounce_rate>
@@ -72,7 +78,9 @@
 		<row>
 			<label>Value not defined</label>
 			<nb_visits>1</nb_visits>
+			<nb_visits_report_ratio>33.3%</nb_visits_report_ratio>
 			<nb_actions>1</nb_actions>
+			<nb_actions_report_ratio>16.7%</nb_actions_report_ratio>
 			<nb_actions_per_visit>1</nb_actions_per_visit>
 			<avg_time_on_site>00:00:00</avg_time_on_site>
 			<bounce_rate>100%</bounce_rate>

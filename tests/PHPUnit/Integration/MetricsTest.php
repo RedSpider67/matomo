@@ -11,6 +11,7 @@ namespace Piwik\Tests\Integration;
 
 use Piwik\Metrics;
 use Piwik\Site;
+use Piwik\Tests\Framework\Fixture;
 use Piwik\Tests\Framework\Mock\FakeAccess;
 use Piwik\Tests\Framework\TestCase\IntegrationTestCase;
 
@@ -86,6 +87,72 @@ class MetricsTest extends IntegrationTestCase
             'hits' => 44,
         );
         $this->assertEquals($expectedMapping, $mapping);
+    }
+
+    /**
+     * @group Core
+     */
+    public function testGetReportRatioMetricNamesWithoutReport()
+    {
+        $expected = array(
+            'nb_visits',
+            'nb_uniq_visitors',
+            'nb_actions',
+            'hits',
+            'nb_hits',
+            'nb_visits_converted',
+            'nb_conversions',
+            'bounce_count',
+            'entry_bounce_count',
+            'entry_nb_visits',
+            'entry_nb_actions',
+            'exit_nb_visits',
+            'exit_nb_uniq_visitors',
+            'revenue',
+        );
+
+        $this->assertEquals($expected, Metrics::getReportRatioMetricNames());
+    }
+
+    /**
+     * @group Core
+     */
+    public function testGetReportRatioMetricNamesIncludesTheMetricsRegisteredByAReport()
+    {
+        $report = new class extends \Piwik\Plugin\Report {
+            public function getMetricNamesToProcessReportTotals()
+            {
+                // reports return metricId => metricColumn pairs
+                return array('12' => 'nb_pageviews', 'mymetric' => 'mymetric');
+            }
+        };
+
+        $names = Metrics::getReportRatioMetricNames($report);
+
+        $this->assertSame(array('nb_pageviews', 'mymetric'), array_values(array_slice($names, -2)));
+        $this->assertContains('nb_visits', $names);
+    }
+
+    public function getReportRatios()
+    {
+        return array(
+            array(3, 11, '27.3%'),
+            array(11, 11, '100%'),
+            array(0, 11, '0%'),
+            // a report total of zero must not raise a division by zero
+            array(5, 0, '0%'),
+        );
+    }
+
+    /**
+     * @dataProvider getReportRatios
+     * @group Core
+     */
+    public function testFormatReportRatio($value, $reportTotal, $expected)
+    {
+        Fixture::loadAllTranslations();
+
+        $this->assertSame($expected, Metrics::formatReportRatio($value, $reportTotal));
     }
 
     public function getLowerValuesBetter()

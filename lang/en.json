@@ -100,6 +100,7 @@
         "ColumnPageGenerationTime": "Page Generation time",
         "ColumnPageviews": "Pageviews",
         "ColumnPageviewsDocumentation": "The number of times this page was visited.",
+        "ColumnPercentageOfMetric": "%1$s (%%)",
         "ColumnPercentageVisits": "%% Visits",
         "ColumnPercentageVisitsDocumentation": "The percentage of total visits.",
         "ColumnRevenue": "Revenue",

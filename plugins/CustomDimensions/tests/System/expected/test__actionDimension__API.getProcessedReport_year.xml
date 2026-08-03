@@ -45,7 +45,9 @@
 	<columns>
 		<label>MyName3</label>
 		<nb_hits>Actions</nb_hits>
+		<nb_hits_report_ratio>Actions (%)</nb_hits_report_ratio>
 		<nb_visits>Unique Actions</nb_visits>
+		<nb_visits_report_ratio>Unique Actions (%)</nb_visits_report_ratio>
 		<avg_time_on_dimension>Avg. Time On Dimension</avg_time_on_dimension>
 		<bounce_rate>Bounce Rate</bounce_rate>
 		<exit_rate>Exit rate</exit_rate>
@@ -54,7 +56,9 @@
 		<row>
 			<label>en</label>
 			<nb_visits>5</nb_visits>
+			<nb_visits_report_ratio>62.5%</nb_visits_report_ratio>
 			<nb_hits>5</nb_hits>
+			<nb_hits_report_ratio>62.5%</nb_hits_report_ratio>
 			<bounce_rate>60%</bounce_rate>
 			<avg_time_on_dimension>00:01:12</avg_time_on_dimension>
 			<exit_rate>80%</exit_rate>
@@ -62,7 +66,9 @@
 		<row>
 			<label>value3</label>
 			<nb_visits>1</nb_visits>
+			<nb_visits_report_ratio>12.5%</nb_visits_report_ratio>
 			<nb_hits>1</nb_hits>
+			<nb_hits_report_ratio>12.5%</nb_hits_report_ratio>
 			<bounce_rate>0%</bounce_rate>
 			<avg_time_on_dimension>00:06:00</avg_time_on_dimension>
 			<exit_rate>0%</exit_rate>
@@ -70,7 +76,9 @@
 		<row>
 			<label>value5 3</label>
 			<nb_visits>1</nb_visits>
+			<nb_visits_report_ratio>12.5%</nb_visits_report_ratio>
 			<nb_hits>1</nb_hits>
+			<nb_hits_report_ratio>12.5%</nb_hits_report_ratio>
 			<bounce_rate>0%</bounce_rate>
 			<avg_time_on_dimension>00:06:00</avg_time_on_dimension>
 			<exit_rate>0%</exit_rate>
@@ -78,7 +86,9 @@
 		<row>
 			<label>Value not defined</label>
 			<nb_visits>1</nb_visits>
+			<nb_visits_report_ratio>12.5%</nb_visits_report_ratio>
 			<nb_hits>1</nb_hits>
+			<nb_hits_report_ratio>12.5%</nb_hits_report_ratio>
 			<bounce_rate>100%</bounce_rate>
 			<avg_time_on_dimension>00:00:00</avg_time_on_dimension>
 			<exit_rate>100%</exit_rate>

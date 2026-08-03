@@ -61,20 +61,27 @@
 	<columns>
 		<label>Country</label>
 		<nb_visits>Visits</nb_visits>
+		<nb_visits_report_ratio>Visits (%)</nb_visits_report_ratio>
 		<nb_uniq_visitors>Unique visitors</nb_uniq_visitors>
+		<nb_uniq_visitors_report_ratio>Unique visitors (%)</nb_uniq_visitors_report_ratio>
 		<nb_actions>Actions</nb_actions>
+		<nb_actions_report_ratio>Actions (%)</nb_actions_report_ratio>
 		<nb_users>Users</nb_users>
 		<nb_actions_per_visit>Actions per Visit</nb_actions_per_visit>
 		<avg_time_on_site>Avg. Time on Website</avg_time_on_site>
 		<bounce_rate>Bounce Rate</bounce_rate>
 		<revenue>Revenue</revenue>
+		<revenue_report_ratio>Revenue (%)</revenue_report_ratio>
 	</columns>
 	<reportData>
 		<row>
 			<label>France</label>
 			<nb_uniq_visitors>1</nb_uniq_visitors>
+			<nb_uniq_visitors_report_ratio>100%</nb_uniq_visitors_report_ratio>
 			<nb_visits>1</nb_visits>
+			<nb_visits_report_ratio>100%</nb_visits_report_ratio>
 			<nb_actions>1</nb_actions>
+			<nb_actions_report_ratio>100%</nb_actions_report_ratio>
 			<nb_users>0</nb_users>
 			<max_actions>1</max_actions>
 			<sum_visit_length>1086</sum_visit_length>
@@ -89,6 +96,7 @@
 			</goals>
 			<nb_conversions>1</nb_conversions>
 			<revenue>$42.26</revenue>
+			<revenue_report_ratio>100%</revenue_report_ratio>
 			<conversion_rate>100%</conversion_rate>
 			<nb_actions_per_visit>1</nb_actions_per_visit>
 			<avg_time_on_site>00:18:06</avg_time_on_site>

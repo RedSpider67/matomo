@@ -529,6 +529,21 @@ class Report
     }
 
     /**
+     * Use this method to prevent metrics from getting an extra column showing the percentage of the
+     * report total, as added to reports rendered outside of the UI, eg. scheduled reports.
+     *
+     * Override it when the report already displays a percentage for a metric that is computed
+     * against a different total, as an additional percentage against the report total would then be
+     * misleading.
+     *
+     * @return string[]  metric column names, eg. `array('nb_visits')`
+     */
+    public function getMetricNamesToExcludeFromReportRatioColumns(): array
+    {
+        return array();
+    }
+
+    /**
      * Returns an array of metric documentations and their corresponding translations. Eg
      * `array('nb_visits' => 'If a visitor comes to your website for the first time or if they visit a page more than 30 minutes after...')`.
      * By default the given {@link $metrics} are used and their corresponding translations are looked up automatically.

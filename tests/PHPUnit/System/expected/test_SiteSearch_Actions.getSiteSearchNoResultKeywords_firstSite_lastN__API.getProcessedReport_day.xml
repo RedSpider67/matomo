@@ -35,6 +35,7 @@
 	<columns>
 		<label>Keyword with No Search Result</label>
 		<nb_visits>Searches</nb_visits>
+		<nb_visits_report_ratio>Searches (%)</nb_visits_report_ratio>
 		<exit_rate>% Search Exits</exit_rate>
 	</columns>
 	<reportData>
@@ -42,6 +43,7 @@
 			<row>
 				<label>No Result Keyword!</label>
 				<nb_visits>1</nb_visits>
+				<nb_visits_report_ratio>100%</nb_visits_report_ratio>
 				<exit_rate>0%</exit_rate>
 			</row>
 		</result>
@@ -49,6 +51,7 @@
 			<row>
 				<label>No Result Keyword!</label>
 				<nb_visits>1</nb_visits>
+				<nb_visits_report_ratio>100%</nb_visits_report_ratio>
 				<exit_rate>0%</exit_rate>
 			</row>
 		</result>

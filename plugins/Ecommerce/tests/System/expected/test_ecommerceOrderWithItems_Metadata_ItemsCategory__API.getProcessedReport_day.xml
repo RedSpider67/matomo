@@ -46,9 +46,11 @@
 	<columns>
 		<label>Product Category</label>
 		<revenue>Product Revenue</revenue>
+		<revenue_report_ratio>Product Revenue (%)</revenue_report_ratio>
 		<quantity>Quantity</quantity>
 		<orders>Unique Purchases</orders>
 		<nb_visits>Visits</nb_visits>
+		<nb_visits_report_ratio>Visits (%)</nb_visits_report_ratio>
 		<avg_price>Average Price</avg_price>
 		<avg_quantity>Average Quantity</avg_quantity>
 		<conversion_rate>Product Conversion Rate</conversion_rate>
@@ -57,9 +59,11 @@
 		<row>
 			<label>Electronics &amp; Cameras</label>
 			<revenue>$2,500</revenue>
+			<revenue_report_ratio>35.2%</revenue_report_ratio>
 			<quantity>3</quantity>
 			<orders>2</orders>
 			<nb_visits>3</nb_visits>
+			<nb_visits_report_ratio>21.4%</nb_visits_report_ratio>
 			<avg_price>$1,000</avg_price>
 			<avg_quantity>1.5</avg_quantity>
 			<conversion_rate>66.67%</conversion_rate>
@@ -67,9 +71,11 @@
 		<row>
 			<label>Multiple Category 1</label>
 			<revenue>$1,000</revenue>
+			<revenue_report_ratio>14.1%</revenue_report_ratio>
 			<quantity>2</quantity>
 			<orders>1</orders>
 			<nb_visits>1</nb_visits>
+			<nb_visits_report_ratio>7.1%</nb_visits_report_ratio>
 			<avg_price>$500</avg_price>
 			<avg_quantity>2</avg_quantity>
 			<conversion_rate>100%</conversion_rate>
@@ -77,9 +83,11 @@
 		<row>
 			<label>Multiple Category 2</label>
 			<revenue>$1,000</revenue>
+			<revenue_report_ratio>14.1%</revenue_report_ratio>
 			<quantity>2</quantity>
 			<orders>1</orders>
 			<nb_visits>1</nb_visits>
+			<nb_visits_report_ratio>7.1%</nb_visits_report_ratio>
 			<avg_price>$500</avg_price>
 			<avg_quantity>2</avg_quantity>
 			<conversion_rate>100%</conversion_rate>
@@ -87,9 +95,11 @@
 		<row>
 			<label>Multiple Category 4</label>
 			<revenue>$1,000</revenue>
+			<revenue_report_ratio>14.1%</revenue_report_ratio>
 			<quantity>2</quantity>
 			<orders>1</orders>
 			<nb_visits>1</nb_visits>
+			<nb_visits_report_ratio>7.1%</nb_visits_report_ratio>
 			<avg_price>$500</avg_price>
 			<avg_quantity>2</avg_quantity>
 			<conversion_rate>100%</conversion_rate>
@@ -97,9 +107,11 @@
 		<row>
 			<label>Multiple Category 5</label>
 			<revenue>$1,000</revenue>
+			<revenue_report_ratio>14.1%</revenue_report_ratio>
 			<quantity>2</quantity>
 			<orders>1</orders>
 			<nb_visits>1</nb_visits>
+			<nb_visits_report_ratio>7.1%</nb_visits_report_ratio>
 			<avg_price>$500</avg_price>
 			<avg_quantity>2</avg_quantity>
 			<conversion_rate>100%</conversion_rate>
@@ -107,9 +119,11 @@
 		<row>
 			<label>Product Category not defined</label>
 			<revenue>$611.22</revenue>
+			<revenue_report_ratio>8.6%</revenue_report_ratio>
 			<quantity>7</quantity>
 			<orders>2</orders>
 			<nb_visits>3</nb_visits>
+			<nb_visits_report_ratio>21.4%</nb_visits_report_ratio>
 			<avg_price>$55.61</avg_price>
 			<avg_quantity>3.5</avg_quantity>
 			<conversion_rate>66.67%</conversion_rate>
@@ -117,20 +131,24 @@
 		<row>
 			<label>Category TWO LEFT in cart</label>
 			<nb_visits>2</nb_visits>
+			<nb_visits_report_ratio>14.3%</nb_visits_report_ratio>
 			<avg_price>$0</avg_price>
 			<avg_quantity>0</avg_quantity>
 			<conversion_rate>0%</conversion_rate>
 			<revenue>$0</revenue>
+			<revenue_report_ratio>0%</revenue_report_ratio>
 			<quantity>0</quantity>
 			<orders>0</orders>
 		</row>
 		<row>
 			<label>second category</label>
 			<nb_visits>2</nb_visits>
+			<nb_visits_report_ratio>14.3%</nb_visits_report_ratio>
 			<avg_price>$0</avg_price>
 			<avg_quantity>0</avg_quantity>
 			<conversion_rate>0%</conversion_rate>
 			<revenue>$0</revenue>
+			<revenue_report_ratio>0%</revenue_report_ratio>
 			<quantity>0</quantity>
 			<orders>0</orders>
 		</row>

@@ -70,23 +70,31 @@
 	<columns>
 		<label>Browser</label>
 		<nb_visits>Visits</nb_visits>
+		<nb_visits_report_ratio>Visits (%)</nb_visits_report_ratio>
 		<nb_uniq_visitors>Unique visitors</nb_uniq_visitors>
+		<nb_uniq_visitors_report_ratio>Unique visitors (%)</nb_uniq_visitors_report_ratio>
 		<nb_actions>Actions</nb_actions>
+		<nb_actions_report_ratio>Actions (%)</nb_actions_report_ratio>
 		<nb_users>Users</nb_users>
 		<nb_actions_per_visit>Actions per Visit</nb_actions_per_visit>
 		<avg_time_on_site>Avg. Time on Website</avg_time_on_site>
 		<bounce_rate>Bounce Rate</bounce_rate>
 		<conversion_rate>Conversion Rate</conversion_rate>
 		<revenue>Revenue</revenue>
+		<revenue_report_ratio>Revenue (%)</revenue_report_ratio>
 	</columns>
 	<reportData>
 		<row>
 			<label>Firefox</label>
 			<nb_uniq_visitors>2</nb_uniq_visitors>
+			<nb_uniq_visitors_report_ratio>100%</nb_uniq_visitors_report_ratio>
 			<nb_visits>3</nb_visits>
+			<nb_visits_report_ratio>100%</nb_visits_report_ratio>
 			<nb_actions>5</nb_actions>
+			<nb_actions_report_ratio>100%</nb_actions_report_ratio>
 			<nb_users>0</nb_users>
 			<revenue>$1,000</revenue>
+			<revenue_report_ratio>100%</revenue_report_ratio>
 			<conversion_rate>66.67%</conversion_rate>
 			<nb_actions_per_visit>1.7</nb_actions_per_visit>
 			<avg_time_on_site>00:04:02</avg_time_on_site>

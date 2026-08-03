@@ -12,6 +12,7 @@ namespace Piwik;
 use Exception;
 use Piwik\API\Request;
 use Piwik\Container\StaticContainer;
+use Piwik\DataTable\DataTableInterface;
 use Piwik\DataTable\Row;
 use Piwik\DataTable\Simple;
 use Piwik\Plugins\ImageGraph\API;
@@ -254,6 +255,46 @@ abstract class ReportRenderer extends BaseFactory
             $finalReport,
             $reportColumns,
         ];
+    }
+
+    /**
+     * Renames the report ratio columns of a report to their translation, eg. `nb_visits_report_ratio`
+     * to `Visits (%)`.
+     *
+     * Renderers that build their header from the column names of the report data itself, instead of
+     * using the translations in `$processedReport['columns']`, need this to show a user friendly
+     * header for those columns.
+     *
+     * @param DataTableInterface $report
+     * @param array $reportColumns column name => translation
+     */
+    protected static function translateReportRatioColumns($report, $reportColumns): void
+    {
+        $ratioColumns = [];
+
+        foreach ($reportColumns as $columnName => $translation) {
+            if (str_ends_with($columnName, Metrics::REPORT_RATIO_COLUMN_SUFFIX)) {
+                $ratioColumns[$columnName] = $translation;
+            }
+        }
+
+        if (empty($ratioColumns)) {
+            return;
+        }
+
+        $report->filter(function (DataTable $table) use ($ratioColumns) {
+            foreach ($table->getRows() as $row) {
+                $columns = $row->getColumns();
+                $renamed = [];
+
+                foreach ($columns as $columnName => $value) {
+                    // keep the position of the column, it directly follows the metric it belongs to
+                    $renamed[$ratioColumns[$columnName] ?? $columnName] = $value;
+                }
+
+                $row->setColumns($renamed);
+            }
+        });
     }
 
     public static function getStaticGraph($reportMetadata, $width, $height, $evolution, $segment)

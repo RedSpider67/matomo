@@ -71,14 +71,18 @@
 	<columns>
 		<label>Entry Page title</label>
 		<entry_nb_visits>Entrances</entry_nb_visits>
+		<entry_nb_visits_report_ratio>Entrances (%)</entry_nb_visits_report_ratio>
 		<entry_bounce_count>Bounces</entry_bounce_count>
+		<entry_bounce_count_report_ratio>Bounces (%)</entry_bounce_count_report_ratio>
 		<bounce_rate>Bounce Rate</bounce_rate>
 	</columns>
 	<reportData>
 		<row>
 			<label> Page A - index.html</label>
 			<entry_nb_visits>4</entry_nb_visits>
+			<entry_nb_visits_report_ratio>100%</entry_nb_visits_report_ratio>
 			<entry_bounce_count>0</entry_bounce_count>
+			<entry_bounce_count_report_ratio>0%</entry_bounce_count_report_ratio>
 			<bounce_rate>0%</bounce_rate>
 			<goal_1_conversion_rate>75%</goal_1_conversion_rate>
 			<goal_1_nb_conversions>3</goal_1_nb_conversions>

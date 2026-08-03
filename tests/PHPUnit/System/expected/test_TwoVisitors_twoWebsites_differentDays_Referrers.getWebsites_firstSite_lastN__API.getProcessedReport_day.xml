@@ -66,8 +66,11 @@
 	<columns>
 		<label>Website</label>
 		<nb_visits>Visits</nb_visits>
+		<nb_visits_report_ratio>Visits (%)</nb_visits_report_ratio>
 		<nb_uniq_visitors>Unique visitors</nb_uniq_visitors>
+		<nb_uniq_visitors_report_ratio>Unique visitors (%)</nb_uniq_visitors_report_ratio>
 		<nb_actions>Actions</nb_actions>
+		<nb_actions_report_ratio>Actions (%)</nb_actions_report_ratio>
 		<nb_users>Users</nb_users>
 		<nb_actions_per_visit>Actions per Visit</nb_actions_per_visit>
 		<avg_time_on_site>Avg. Time on Website</avg_time_on_site>
@@ -79,8 +82,11 @@
 			<row>
 				<label>referrer.com</label>
 				<nb_uniq_visitors>1</nb_uniq_visitors>
+				<nb_uniq_visitors_report_ratio>100%</nb_uniq_visitors_report_ratio>
 				<nb_visits>1</nb_visits>
+				<nb_visits_report_ratio>100%</nb_visits_report_ratio>
 				<nb_actions>1</nb_actions>
+				<nb_actions_report_ratio>100%</nb_actions_report_ratio>
 				<nb_users>0</nb_users>
 				<nb_actions_per_visit>1</nb_actions_per_visit>
 				<avg_time_on_site>00:00:00</avg_time_on_site>
@@ -92,8 +98,11 @@
 			<row>
 				<label>referrer.com</label>
 				<nb_uniq_visitors>1</nb_uniq_visitors>
+				<nb_uniq_visitors_report_ratio>100%</nb_uniq_visitors_report_ratio>
 				<nb_visits>1</nb_visits>
+				<nb_visits_report_ratio>100%</nb_visits_report_ratio>
 				<nb_actions>1</nb_actions>
+				<nb_actions_report_ratio>100%</nb_actions_report_ratio>
 				<nb_users>0</nb_users>
 				<nb_actions_per_visit>1</nb_actions_per_visit>
 				<avg_time_on_site>00:00:00</avg_time_on_site>
@@ -108,8 +117,11 @@
 			<row>
 				<label>referrer.com</label>
 				<nb_uniq_visitors>1</nb_uniq_visitors>
+				<nb_uniq_visitors_report_ratio>100%</nb_uniq_visitors_report_ratio>
 				<nb_visits>1</nb_visits>
+				<nb_visits_report_ratio>100%</nb_visits_report_ratio>
 				<nb_actions>5</nb_actions>
+				<nb_actions_report_ratio>100%</nb_actions_report_ratio>
 				<nb_users>0</nb_users>
 				<nb_actions_per_visit>5</nb_actions_per_visit>
 				<avg_time_on_site>00:15:01</avg_time_on_site>
@@ -121,8 +133,11 @@
 			<row>
 				<label>referrer.com</label>
 				<nb_uniq_visitors>1</nb_uniq_visitors>
+				<nb_uniq_visitors_report_ratio>100%</nb_uniq_visitors_report_ratio>
 				<nb_visits>1</nb_visits>
+				<nb_visits_report_ratio>100%</nb_visits_report_ratio>
 				<nb_actions>5</nb_actions>
+				<nb_actions_report_ratio>100%</nb_actions_report_ratio>
 				<nb_users>0</nb_users>
 				<nb_actions_per_visit>5</nb_actions_per_visit>
 				<avg_time_on_site>00:15:01</avg_time_on_site>

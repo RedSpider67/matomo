@@ -520,7 +520,9 @@ class ProcessedReport
          */
         Piwik::postEvent('API.getProcessedReport.inner.after', [$parameters, $dataTable]);
 
-        [$newReport, $columns, $rowsMetadata, $totals] = $this->handleTableReport($idSite, $dataTable, $reportMetadata, $showRawMetrics, $formatMetrics);
+        $report = ReportsProvider::factory($apiModule, $apiAction);
+
+        [$newReport, $columns, $rowsMetadata, $totals] = $this->handleTableReport($idSite, $dataTable, $reportMetadata, $showRawMetrics, $formatMetrics, $report);
 
         if (function_exists('mb_substr')) {
             foreach ($columns as &$name) {
@@ -564,9 +566,10 @@ class ProcessedReport
      * @param array $reportMetadata
      * @param bool $showRawMetrics
      * @param bool|null $formatMetrics
+     * @param \Piwik\Plugin\Report|null $report
      * @return array Simple|Set $newReport with human readable format & array $columns list of translated column names & Simple|Set $rowsMetadata
      */
-    private function handleTableReport($idSite, $dataTable, &$reportMetadata, $showRawMetrics = false, $formatMetrics = null): array
+    private function handleTableReport($idSite, $dataTable, &$reportMetadata, $showRawMetrics = false, $formatMetrics = null, $report = null): array
     {
         $hasDimension = isset($reportMetadata['dimension']);
         $columns = @$reportMetadata['metrics'] ?: array();
@@ -606,6 +609,11 @@ class ProcessedReport
         $columns = $this->hideShowMetrics($columns);
         $totals = [];
 
+        // metrics the report ratio columns were added for, they are appended to $columns once all
+        // tables have been processed. They must not be part of the columns handleSimpleDataTable()
+        // works on, as it would then add them as regular (empty) metrics.
+        $ratioMetrics = [];
+
         // $dataTable is an instance of Set when multiple periods requested
         if ($dataTable instanceof DataTable\Map) {
             // Need a new Set to store the 'human readable' values
@@ -620,7 +628,10 @@ class ProcessedReport
             foreach ($dataTable->getDataTables() as $simpleDataTable) {
                 $this->removeEmptyColumns($columns, $reportMetadata, $simpleDataTable);
 
-                [$enhancedSimpleDataTable, $rowMetadata] = $this->handleSimpleDataTable($idSite, $simpleDataTable, $columns, $hasDimension, $showRawMetrics, $formatMetrics);
+                $ratioColumns = $this->getReportRatioColumns($columns, $simpleDataTable, $report);
+                $ratioMetrics += $ratioColumns;
+
+                [$enhancedSimpleDataTable, $rowMetadata] = $this->handleSimpleDataTable($idSite, $simpleDataTable, $columns, $hasDimension, $showRawMetrics, $formatMetrics, false, $ratioColumns);
                 $enhancedSimpleDataTable->setAllTableMetadata($simpleDataTable->getAllTableMetadata());
 
                 $period = $simpleDataTable->getMetadata(DataTableFactory::TABLE_METADATA_PERIOD_INDEX)->getLocalizedLongString();
@@ -631,11 +642,16 @@ class ProcessedReport
             }
         } else {
             $this->removeEmptyColumns($columns, $reportMetadata, $dataTable);
-            [$newReport, $rowsMetadata] = $this->handleSimpleDataTable($idSite, $dataTable, $columns, $hasDimension, $showRawMetrics, $formatMetrics);
+
+            $ratioMetrics = $this->getReportRatioColumns($columns, $dataTable, $report);
+
+            [$newReport, $rowsMetadata] = $this->handleSimpleDataTable($idSite, $dataTable, $columns, $hasDimension, $showRawMetrics, $formatMetrics, false, $ratioMetrics);
             $newReport->setAllTableMetadata($dataTable->getAllTableMetadata());
 
             $totals = $this->aggregateReportTotalValues($dataTable, $totals);
         }
+
+        $columns = $this->addReportRatioColumnNames($columns, $ratioMetrics);
 
         return [
             $newReport,
@@ -643,6 +659,73 @@ class ProcessedReport
             $rowsMetadata,
             $totals,
         ];
+    }
+
+    /**
+     * Returns the metrics of a report a report ratio column can be shown for, ie. the metrics the
+     * HTML table visualization shows a percentage of the report total for when hovering a row.
+     *
+     * @param array $columns The columns of the processed report, metric name => translation.
+     * @param DataTable $dataTable The table the report totals are read from.
+     * @param \Piwik\Plugin\Report|null $report
+     * @return array metric name => report ratio column name
+     */
+    private function getReportRatioColumns($columns, $dataTable, $report): array
+    {
+        $totals = $dataTable->getMetadata('totalsUnformatted');
+
+        if (!is_array($totals)) {
+            return [];
+        }
+
+        $metricNames = Metrics::getReportRatioMetricNames($report);
+
+        if (!empty($report)) {
+            $metricNames = array_diff($metricNames, $report->getMetricNamesToExcludeFromReportRatioColumns());
+        }
+
+        $ratioColumns = [];
+
+        foreach ($metricNames as $metricName) {
+            // the metric must be displayed in the report and have a report total to compare it to,
+            // this is the same condition the HTML table visualization applies
+            if (
+                isset($columns[$metricName])
+                && isset($totals[$metricName])
+                && is_numeric($totals[$metricName])
+            ) {
+                $ratioColumns[$metricName] = $metricName . Metrics::REPORT_RATIO_COLUMN_SUFFIX;
+            }
+        }
+
+        return $ratioColumns;
+    }
+
+    /**
+     * Adds the translations of the report ratio columns to the list of columns, each one directly
+     * after the metric it shows the percentage of.
+     *
+     * @param array $columns metric name => translation
+     * @param array $ratioColumns metric name => report ratio column name
+     * @return array
+     */
+    private function addReportRatioColumnNames($columns, $ratioColumns): array
+    {
+        if (empty($ratioColumns)) {
+            return $columns;
+        }
+
+        $columnsWithRatios = [];
+
+        foreach ($columns as $columnName => $translation) {
+            $columnsWithRatios[$columnName] = $translation;
+
+            if (isset($ratioColumns[$columnName])) {
+                $columnsWithRatios[$ratioColumns[$columnName]] = Piwik::translate('General_ColumnPercentageOfMetric', $translation);
+            }
+        }
+
+        return $columnsWithRatios;
     }
 
     /**
@@ -746,11 +829,15 @@ class ProcessedReport
      * @param boolean $hasDimension
      * @param bool $returnRawMetrics If set to true, the original metrics will be returned
      * @param bool|null $formatMetrics
+     * @param bool $keepMetadata
+     * @param array $ratioColumns metric name => report ratio column name, @see getReportRatioColumns()
      * @return array DataTable $enhancedDataTable filtered metrics with human readable format & Simple $rowsMetadata
      */
-    private function handleSimpleDataTable($idSite, $simpleDataTable, $metadataColumns, $hasDimension, $returnRawMetrics = false, $formatMetrics = null, $keepMetadata = false)
+    private function handleSimpleDataTable($idSite, $simpleDataTable, $metadataColumns, $hasDimension, $returnRawMetrics = false, $formatMetrics = null, $keepMetadata = false, $ratioColumns = [])
     {
         $comparisonColumns = $this->getComparisonColumns($metadataColumns);
+
+        $reportTotals = $ratioColumns ? ($simpleDataTable->getMetadata('totalsUnformatted') ?: []) : [];
 
         // new DataTable to store metadata
         $rowsMetadata = new DataTable();
@@ -811,6 +898,15 @@ class ProcessedReport
                         $prettyValue = $columnValue;
                     }
                     $enhancedRow->addColumn($columnName, $prettyValue);
+
+                    // add the percentage of the report total directly after the metric it belongs to,
+                    // computed on the raw value as the report totals are unformatted as well
+                    if (isset($ratioColumns[$columnName], $reportTotals[$columnName])) {
+                        $enhancedRow->addColumn(
+                            $ratioColumns[$columnName],
+                            Metrics::formatReportRatio(is_numeric($columnValue) ? $columnValue : 0, $reportTotals[$columnName])
+                        );
+                    }
                 } elseif ($returnRawMetrics) {
                     // For example the Maps Widget requires the raw metrics to do advanced datavis
                     if (!isset($columnValue)) {

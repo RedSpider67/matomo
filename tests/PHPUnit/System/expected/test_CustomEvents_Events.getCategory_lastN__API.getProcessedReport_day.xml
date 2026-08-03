@@ -56,7 +56,9 @@
 		<label>Event Category</label>
 		<nb_events>Events</nb_events>
 		<nb_visits>Visits</nb_visits>
+		<nb_visits_report_ratio>Visits (%)</nb_visits_report_ratio>
 		<nb_uniq_visitors>Unique visitors</nb_uniq_visitors>
+		<nb_uniq_visitors_report_ratio>Unique visitors (%)</nb_uniq_visitors_report_ratio>
 		<sum_event_value>Event value</sum_event_value>
 		<min_event_value>Minimum Event value</min_event_value>
 		<max_event_value>Maximum Event value</max_event_value>
@@ -68,7 +70,9 @@
 			<row>
 				<label>Movie</label>
 				<nb_uniq_visitors>26</nb_uniq_visitors>
+				<nb_uniq_visitors_report_ratio>63.4%</nb_uniq_visitors_report_ratio>
 				<nb_visits>28</nb_visits>
+				<nb_visits_report_ratio>65.1%</nb_visits_report_ratio>
 				<nb_events>28</nb_events>
 				<nb_events_with_value>2</nb_events_with_value>
 				<sum_event_value>19.32</sum_event_value>
@@ -79,7 +83,9 @@
 			<row>
 				<label>Music</label>
 				<nb_uniq_visitors>12</nb_uniq_visitors>
+				<nb_uniq_visitors_report_ratio>29.3%</nb_uniq_visitors_report_ratio>
 				<nb_visits>12</nb_visits>
+				<nb_visits_report_ratio>27.9%</nb_visits_report_ratio>
 				<nb_events>14</nb_events>
 				<nb_events_with_value>4</nb_events_with_value>
 				<sum_event_value>38</sum_event_value>
@@ -90,7 +96,9 @@
 			<row>
 				<label>event category Extremely long Extremely long Extremely long Extremely long Extremely long Extremely long Extremely long Extremely long Extremely long Extremely long ---&gt; SHOULD APPEAR IN TEST OUTPUT NOT TRUNCATED &lt;---</label>
 				<nb_uniq_visitors>2</nb_uniq_visitors>
+				<nb_uniq_visitors_report_ratio>4.9%</nb_uniq_visitors_report_ratio>
 				<nb_visits>2</nb_visits>
+				<nb_visits_report_ratio>4.7%</nb_visits_report_ratio>
 				<nb_events>2</nb_events>
 				<nb_events_with_value>2</nb_events_with_value>
 				<sum_event_value>19.32</sum_event_value>
@@ -101,7 +109,9 @@
 			<row>
 				<label>CategoryTriggersGoal here</label>
 				<nb_uniq_visitors>1</nb_uniq_visitors>
+				<nb_uniq_visitors_report_ratio>2.4%</nb_uniq_visitors_report_ratio>
 				<nb_visits>1</nb_visits>
+				<nb_visits_report_ratio>2.3%</nb_visits_report_ratio>
 				<nb_events>3</nb_events>
 				<nb_events_with_value>2</nb_events_with_value>
 				<sum_event_value>23</sum_event_value>
@@ -114,7 +124,9 @@
 			<row>
 				<label>Movie</label>
 				<nb_uniq_visitors>13</nb_uniq_visitors>
+				<nb_uniq_visitors_report_ratio>65%</nb_uniq_visitors_report_ratio>
 				<nb_visits>14</nb_visits>
+				<nb_visits_report_ratio>66.7%</nb_visits_report_ratio>
 				<nb_events>14</nb_events>
 				<nb_events_with_value>1</nb_events_with_value>
 				<sum_event_value>9.66</sum_event_value>
@@ -125,7 +137,9 @@
 			<row>
 				<label>Music</label>
 				<nb_uniq_visitors>6</nb_uniq_visitors>
+				<nb_uniq_visitors_report_ratio>30%</nb_uniq_visitors_report_ratio>
 				<nb_visits>6</nb_visits>
+				<nb_visits_report_ratio>28.6%</nb_visits_report_ratio>
 				<nb_events>7</nb_events>
 				<nb_events_with_value>2</nb_events_with_value>
 				<sum_event_value>19</sum_event_value>
@@ -136,7 +150,9 @@
 			<row>
 				<label>event category Extremely long Extremely long Extremely long Extremely long Extremely long Extremely long Extremely long Extremely long Extremely long Extremely long ---&gt; SHOULD APPEAR IN TEST OUTPUT NOT TRUNCATED &lt;---</label>
 				<nb_uniq_visitors>1</nb_uniq_visitors>
+				<nb_uniq_visitors_report_ratio>5%</nb_uniq_visitors_report_ratio>
 				<nb_visits>1</nb_visits>
+				<nb_visits_report_ratio>4.8%</nb_visits_report_ratio>
 				<nb_events>1</nb_events>
 				<nb_events_with_value>1</nb_events_with_value>
 				<sum_event_value>9.66</sum_event_value>

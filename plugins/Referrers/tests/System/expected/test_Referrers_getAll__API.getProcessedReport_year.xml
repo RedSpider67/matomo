@@ -46,7 +46,9 @@
 	<columns>
 		<label>Referrer</label>
 		<nb_visits>Visits</nb_visits>
+		<nb_visits_report_ratio>Visits (%)</nb_visits_report_ratio>
 		<nb_actions>Actions</nb_actions>
+		<nb_actions_report_ratio>Actions (%)</nb_actions_report_ratio>
 		<nb_actions_per_visit>Actions per Visit</nb_actions_per_visit>
 		<avg_time_on_site>Avg. Time on Website</avg_time_on_site>
 		<bounce_rate>Bounce Rate</bounce_rate>
@@ -56,7 +58,9 @@
 		<row>
 			<label>ChatGPT</label>
 			<nb_visits>12</nb_visits>
+			<nb_visits_report_ratio>12.9%</nb_visits_report_ratio>
 			<nb_actions>12</nb_actions>
+			<nb_actions_report_ratio>12.9%</nb_actions_report_ratio>
 			<conversion_rate>0%</conversion_rate>
 			<nb_actions_per_visit>1</nb_actions_per_visit>
 			<avg_time_on_site>00:00:00</avg_time_on_site>
@@ -65,7 +69,9 @@
 		<row>
 			<label>free &gt; proprietary</label>
 			<nb_visits>11</nb_visits>
+			<nb_visits_report_ratio>11.8%</nb_visits_report_ratio>
 			<nb_actions>11</nb_actions>
+			<nb_actions_report_ratio>11.8%</nb_actions_report_ratio>
 			<conversion_rate>0%</conversion_rate>
 			<nb_actions_per_visit>1</nb_actions_per_visit>
 			<avg_time_on_site>00:00:00</avg_time_on_site>
@@ -74,7 +80,9 @@
 		<row>
 			<label>justice )(&amp;^#%$ not '&quot; corruption!</label>
 			<nb_visits>10</nb_visits>
+			<nb_visits_report_ratio>10.8%</nb_visits_report_ratio>
 			<nb_actions>10</nb_actions>
+			<nb_actions_report_ratio>10.8%</nb_actions_report_ratio>
 			<conversion_rate>0%</conversion_rate>
 			<nb_actions_per_visit>1</nb_actions_per_visit>
 			<avg_time_on_site>00:00:00</avg_time_on_site>
@@ -83,7 +91,9 @@
 		<row>
 			<label>peace &quot;,&quot; not war</label>
 			<nb_visits>10</nb_visits>
+			<nb_visits_report_ratio>10.8%</nb_visits_report_ratio>
 			<nb_actions>10</nb_actions>
+			<nb_actions_report_ratio>10.8%</nb_actions_report_ratio>
 			<conversion_rate>0%</conversion_rate>
 			<nb_actions_per_visit>1</nb_actions_per_visit>
 			<avg_time_on_site>00:00:00</avg_time_on_site>
@@ -92,7 +102,9 @@
 		<row>
 			<label>Perplexity</label>
 			<nb_visits>8</nb_visits>
+			<nb_visits_report_ratio>8.6%</nb_visits_report_ratio>
 			<nb_actions>8</nb_actions>
+			<nb_actions_report_ratio>8.6%</nb_actions_report_ratio>
 			<conversion_rate>0%</conversion_rate>
 			<nb_actions_per_visit>1</nb_actions_per_visit>
 			<avg_time_on_site>00:00:00</avg_time_on_site>
@@ -101,7 +113,9 @@
 		<row>
 			<label>www.referrer0.com</label>
 			<nb_visits>7</nb_visits>
+			<nb_visits_report_ratio>7.5%</nb_visits_report_ratio>
 			<nb_actions>7</nb_actions>
+			<nb_actions_report_ratio>7.5%</nb_actions_report_ratio>
 			<conversion_rate>100%</conversion_rate>
 			<nb_actions_per_visit>1</nb_actions_per_visit>
 			<avg_time_on_site>00:06:05</avg_time_on_site>
@@ -110,7 +124,9 @@
 		<row>
 			<label>www.referrer1.com</label>
 			<nb_visits>6</nb_visits>
+			<nb_visits_report_ratio>6.5%</nb_visits_report_ratio>
 			<nb_actions>6</nb_actions>
+			<nb_actions_report_ratio>6.5%</nb_actions_report_ratio>
 			<conversion_rate>100%</conversion_rate>
 			<nb_actions_per_visit>1</nb_actions_per_visit>
 			<avg_time_on_site>00:06:05</avg_time_on_site>
@@ -119,7 +135,9 @@
 		<row>
 			<label>www.referrer2.com</label>
 			<nb_visits>6</nb_visits>
+			<nb_visits_report_ratio>6.5%</nb_visits_report_ratio>
 			<nb_actions>6</nb_actions>
+			<nb_actions_report_ratio>6.5%</nb_actions_report_ratio>
 			<conversion_rate>100%</conversion_rate>
 			<nb_actions_per_visit>1</nb_actions_per_visit>
 			<avg_time_on_site>00:06:05</avg_time_on_site>
@@ -128,7 +146,9 @@
 		<row>
 			<label>www.referrer3.com</label>
 			<nb_visits>6</nb_visits>
+			<nb_visits_report_ratio>6.5%</nb_visits_report_ratio>
 			<nb_actions>6</nb_actions>
+			<nb_actions_report_ratio>6.5%</nb_actions_report_ratio>
 			<conversion_rate>100%</conversion_rate>
 			<nb_actions_per_visit>1</nb_actions_per_visit>
 			<avg_time_on_site>00:06:05</avg_time_on_site>
@@ -137,7 +157,9 @@
 		<row>
 			<label>www.referrer4.com</label>
 			<nb_visits>6</nb_visits>
+			<nb_visits_report_ratio>6.5%</nb_visits_report_ratio>
 			<nb_actions>6</nb_actions>
+			<nb_actions_report_ratio>6.5%</nb_actions_report_ratio>
 			<conversion_rate>100%</conversion_rate>
 			<nb_actions_per_visit>1</nb_actions_per_visit>
 			<avg_time_on_site>00:06:05</avg_time_on_site>
@@ -146,7 +168,9 @@
 		<row>
 			<label>Claude</label>
 			<nb_visits>4</nb_visits>
+			<nb_visits_report_ratio>4.3%</nb_visits_report_ratio>
 			<nb_actions>4</nb_actions>
+			<nb_actions_report_ratio>4.3%</nb_actions_report_ratio>
 			<conversion_rate>0%</conversion_rate>
 			<nb_actions_per_visit>1</nb_actions_per_visit>
 			<avg_time_on_site>00:00:00</avg_time_on_site>
@@ -155,7 +179,9 @@
 		<row>
 			<label>Gemini</label>
 			<nb_visits>4</nb_visits>
+			<nb_visits_report_ratio>4.3%</nb_visits_report_ratio>
 			<nb_actions>4</nb_actions>
+			<nb_actions_report_ratio>4.3%</nb_actions_report_ratio>
 			<conversion_rate>0%</conversion_rate>
 			<nb_actions_per_visit>1</nb_actions_per_visit>
 			<avg_time_on_site>00:00:00</avg_time_on_site>
@@ -164,7 +190,9 @@
 		<row>
 			<label>Le Chat</label>
 			<nb_visits>3</nb_visits>
+			<nb_visits_report_ratio>3.2%</nb_visits_report_ratio>
 			<nb_actions>3</nb_actions>
+			<nb_actions_report_ratio>3.2%</nb_actions_report_ratio>
 			<conversion_rate>0%</conversion_rate>
 			<nb_actions_per_visit>1</nb_actions_per_visit>
 			<avg_time_on_site>00:00:00</avg_time_on_site>

@@ -2787,7 +2787,7 @@ parameters:
 		-
 			message: '#^Property Piwik\\Plugin\\Visualization\:\:\$report \(Piwik\\Plugin\\Report\) in empty\(\) is not falsy\.$#'
 			identifier: empty.property
-			count: 2
+			count: 1
 			path: plugins/CoreVisualizations/Visualizations/HtmlTable.php
 
 		-

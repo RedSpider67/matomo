@@ -11,6 +11,7 @@ namespace Piwik;
 
 use Piwik\Cache as PiwikCache;
 use Piwik\Columns\Dimension;
+use Piwik\Plugin\Report;
 use Piwik\Tracker\GoalManager;
 
 require_once PIWIK_INCLUDE_PATH . "/core/Piwik.php";
@@ -112,6 +113,12 @@ class Metrics
     public const INDEX_GOAL_REVENUE_ATTRIB = 15;
     public const INDEX_GOAL_NB_CONVERSIONS_ENTRY = 16;
     public const INDEX_GOAL_REVENUE_ENTRY = 17;
+
+    /**
+     * Suffix appended to a metric name to build the name of the column holding the percentage of the
+     * report total this metric represents, eg. `nb_visits` => `nb_visits_report_ratio`.
+     */
+    public const REPORT_RATIO_COLUMN_SUFFIX = '_report_ratio';
 
     /**
      * @var string[]
@@ -592,6 +599,52 @@ class Metrics
             self::INDEX_PAGE_EXIT_NB_UNIQ_VISITORS,
             self::INDEX_REVENUE,
         ];
+    }
+
+    /**
+     * Returns the names of the metrics that support a report total ratio, ie. the percentage of the
+     * report total a single row represents.
+     *
+     * These are the metrics returned by {@link getMetricIdsToProcessReportTotal()} plus any metric
+     * a report registers through {@link \Piwik\Plugin\Report::getMetricNamesToProcessReportTotals()}.
+     *
+     * @param Report|null $report The report the metrics are looked up for, if any.
+     * @return string[]
+     */
+    public static function getReportRatioMetricNames(?Report $report = null): array
+    {
+        $metricNames = [];
+
+        foreach (self::getMetricIdsToProcessReportTotal() as $metricId) {
+            $metricNames[] = self::getReadableColumnName($metricId);
+        }
+
+        if (!empty($report)) {
+            // the report returns metricId => metricColumn pairs, only the column names are of interest here
+            foreach ($report->getMetricNamesToProcessReportTotals() as $metricName) {
+                $metricNames[] = $metricName;
+            }
+        }
+
+        return $metricNames;
+    }
+
+    /**
+     * Formats the ratio of a metric value to the report total the same way the HTML table
+     * visualization does when showing the percentage of a row on hover.
+     *
+     * @param int|float|string $value The metric value of a single row.
+     * @param int|float|string $reportTotal The unformatted report total for the same metric.
+     * @return string eg. `'41.7%'`
+     */
+    public static function formatReportRatio($value, $reportTotal): string
+    {
+        $precision = 1;
+
+        return NumberFormatter::getInstance()->formatPercent(
+            Piwik::getPercentageSafe($value, $reportTotal, $precision),
+            $precision
+        );
     }
 
     /**

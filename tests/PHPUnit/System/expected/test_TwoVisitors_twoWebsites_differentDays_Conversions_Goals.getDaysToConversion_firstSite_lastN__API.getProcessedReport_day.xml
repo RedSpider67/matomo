@@ -39,6 +39,7 @@
 	<columns>
 		<label>Days to Conversion</label>
 		<nb_conversions>Conversions</nb_conversions>
+		<nb_conversions_report_ratio>Conversions (%)</nb_conversions_report_ratio>
 		<revenue>Revenue</revenue>
 	</columns>
 	<reportData>
@@ -46,71 +47,85 @@
 			<row>
 				<label>0 days</label>
 				<nb_conversions>2</nb_conversions>
+				<nb_conversions_report_ratio>100%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>1 day</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>2 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>3 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>4 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>5 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>6 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>7 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>8-14 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>15-30 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>31-60 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>61-120 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>121-364 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>365+ days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 		</result>
@@ -119,71 +134,85 @@
 			<row>
 				<label>0 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>1 day</label>
 				<nb_conversions>2</nb_conversions>
+				<nb_conversions_report_ratio>100%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>2 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>3 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>4 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>5 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>6 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>7 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>8-14 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>15-30 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>31-60 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>61-120 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>121-364 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>365+ days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 		</result>
@@ -191,71 +220,85 @@
 			<row>
 				<label>0 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>1 day</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>2 days</label>
 				<nb_conversions>2</nb_conversions>
+				<nb_conversions_report_ratio>100%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>3 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>4 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>5 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>6 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>7 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>8-14 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>15-30 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>31-60 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>61-120 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>121-364 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>365+ days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 		</result>
@@ -263,71 +306,85 @@
 			<row>
 				<label>0 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>1 day</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>2 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>3 days</label>
 				<nb_conversions>2</nb_conversions>
+				<nb_conversions_report_ratio>100%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>4 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>5 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>6 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>7 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>8-14 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>15-30 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>31-60 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>61-120 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>121-364 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>365+ days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 		</result>
@@ -335,71 +392,85 @@
 			<row>
 				<label>0 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>1 day</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>2 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>3 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>4 days</label>
 				<nb_conversions>1</nb_conversions>
+				<nb_conversions_report_ratio>100%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>5 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>6 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>7 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>8-14 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>15-30 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>31-60 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>61-120 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>121-364 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>365+ days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 		</result>
@@ -407,71 +478,85 @@
 			<row>
 				<label>0 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>1 day</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>2 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>3 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>4 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>5 days</label>
 				<nb_conversions>1</nb_conversions>
+				<nb_conversions_report_ratio>100%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>6 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>7 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>8-14 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>15-30 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>31-60 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>61-120 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>121-364 days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 			<row>
 				<label>365+ days</label>
 				<nb_conversions>0</nb_conversions>
+				<nb_conversions_report_ratio>0%</nb_conversions_report_ratio>
 				<revenue>$0</revenue>
 			</row>
 		</result>

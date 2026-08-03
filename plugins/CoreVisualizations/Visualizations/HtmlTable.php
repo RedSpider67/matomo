@@ -15,9 +15,7 @@ use Piwik\Common;
 use Piwik\DataTable\Row;
 use Piwik\Metrics;
 use Piwik\DataTable;
-use Piwik\NumberFormatter;
 use Piwik\Period;
-use Piwik\Piwik;
 use Piwik\Plugin\Visualization;
 
 /**
@@ -79,14 +77,10 @@ class HtmlTable extends Visualization
             $this->config->show_totals_row = false;
         }
 
-        foreach (Metrics::getMetricIdsToProcessReportTotal() as $metricId) {
-            $this->config->report_ratio_columns[] = Metrics::getReadableColumnName($metricId);
-        }
-        if (!empty($this->report)) {
-            foreach ($this->report->getMetricNamesToProcessReportTotals() as $metricName) {
-                $this->config->report_ratio_columns[] = $metricName;
-            }
-        }
+        $this->config->report_ratio_columns = array_merge(
+            $this->config->report_ratio_columns,
+            Metrics::getReportRatioMetricNames($this->report)
+        );
 
         if ($this->dataTable->getRowsCount()) {
             $siteTotalRow = $this->getSiteSummary() ? $this->getSiteSummary()->getFirstRow() : null;
@@ -214,7 +208,6 @@ class HtmlTable extends Visualization
         }
 
         $columnNamesToIndices = Metrics::getMappingFromNameToId();
-        $formatter = NumberFormatter::getInstance();
 
         $totals = $this->dataTable->getMetadata('totalsUnformatted');
 
@@ -235,8 +228,7 @@ class HtmlTable extends Visualization
 
                 if (is_numeric($value)) {
                     $percentageColumnName = $column . '_row_percentage';
-                    $rowPercentage = $formatter->formatPercent(Piwik::getPercentageSafe($value, $reportTotal, $precision = 1), $precision);
-                    $row->setMetadata($percentageColumnName, $rowPercentage);
+                    $row->setMetadata($percentageColumnName, Metrics::formatReportRatio($value, $reportTotal));
                 }
 
                 if ($siteTotalRow) {
@@ -244,8 +236,7 @@ class HtmlTable extends Visualization
 
                     $siteTotalPercentage = $column . '_site_total_percentage';
                     if ($siteTotal && $siteTotal > $reportTotal) {
-                        $rowPercentage = $formatter->formatPercent(Piwik::getPercentageSafe($value, $siteTotal, $precision = 1), $precision);
-                        $row->setMetadata($siteTotalPercentage, $rowPercentage);
+                        $row->setMetadata($siteTotalPercentage, Metrics::formatReportRatio($value, $siteTotal));
                     }
                 }
             }

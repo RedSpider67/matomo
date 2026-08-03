@@ -45,9 +45,22 @@ The Product Changelog at **[matomo.org/changelog](https://matomo.org/changelog)*
 * `CoreHome.EnrichedHeadline` no longer derives a report's inline help from the DOM. It used to look for a `.reportDocumentation[data-content]` element inside the next sibling of its headline and show that text behind a help icon; the text now comes from its `inline-help` attribute. The `piwik:reportChanged` DOM event, which told a headline to re-read that element, has been removed with it. Headlines rendered by `Piwik\View::singleReport()`, or by a template reproducing its shape, therefore lose their help icon unless `inline-help` is passed explicitly.
 
 ### New APIs
+* A new method `Piwik\Plugin\Report::getMetricNamesToExcludeFromReportRatioColumns()` lets a report opt metrics out of the
+  percentage-of-the-report-total column described under HTTP API below. Override it when the report already shows a percentage
+  for that metric computed against a different total, where a second percentage against the report total would contradict it.
+* New helpers `Piwik\Metrics::getReportRatioMetricNames()` and `Piwik\Metrics::formatReportRatio()` expose the metric eligibility
+  and the percentage formatting that the HTML table visualization uses for the percentage it shows when hovering a row, so both
+  it and the new report columns derive from one implementation. The column name suffix is available as
+  `Piwik\Metrics::REPORT_RATIO_COLUMN_SUFFIX`.
 * A new `#[Piwik\Http\JsonResponse]` attribute can be applied to a plugin controller action to declare that it returns a JSON response. When present, Matomo (re-)sends the `Content-Type: application/json` header after the action has returned, so it can no longer be overwritten by output produced while the action builds its response (for example a rendered `Piwik\View`, which sends `text/html`). An action using the attribute must return the JSON string, must not send the header itself, and must not emit output (`echo`/`print`/`flush`) or call `exit`/`die` before returning — otherwise the response headers are committed first and the JSON `Content-Type` cannot be applied. The attribute is not inherited: a subclass overriding a JSON action must re-declare it. These requirements are enforced by PHPStan rules.
 
 ### HTTP API
+* `API.getProcessedReport` now returns an additional column for every metric that supports a report total ratio, holding the
+  percentage of the report total that row represents, for example `nb_visits_report_ratio` with the value `27.3%` next to
+  `nb_visits`. The columns appear in `columns` (translated, for example `Visits (%)`) and on every row of `reportData`, directly
+  after the metric they belong to. A metric only gets one where the report has a total for it, so reports without a dimension are
+  unaffected. Metrics already expressed as a percentage, rate, average or duration never get one. Integrations that iterate the
+  columns of a processed report will see these extra entries.
 * `API.getBulkRequest` now validates the authentication parameters of each nested request URL against
   the outer request. Within a browser session a nested request may change neither the session flag
   (`force_api_session`) nor the acting user (`token_auth`); outside a session a nested request may still
