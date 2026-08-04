@@ -41,11 +41,21 @@ function setupAutoClear(el: HTMLInputElementWithAutoClear, delay: number) {
   let lastValue = el.value;
 
   const clearValue = (): void => {
+    if (el.value === '') {
+      return;
+    }
+
     el.value = '';
-    // `change` syncs the Vue password Field's v-model; `input` covers plain
-    // listeners. Without it a later render writes the old value back.
+    // `change` syncs the Vue password Field's v-model, `input` plain listeners.
     el.dispatchEvent(new Event('input'));
     el.dispatchEvent(new Event('change'));
+
+    // Both events hit our own listeners and re-arm the timer, so drop it again.
+    lastValue = '';
+    if (timeoutId !== undefined) {
+      clearTimeout(timeoutId);
+      timeoutId = undefined;
+    }
   };
 
   const resetTimer = (): void => {
