@@ -61,22 +61,30 @@
 	<columns>
 		<label>Site time — hour (start of visit)</label>
 		<nb_visits>Visits</nb_visits>
+		<nb_visits_report_ratio>Visits (%)</nb_visits_report_ratio>
 		<nb_uniq_visitors>Unique visitors</nb_uniq_visitors>
+		<nb_uniq_visitors_report_ratio>Unique visitors (%)</nb_uniq_visitors_report_ratio>
 		<nb_actions>Actions</nb_actions>
+		<nb_actions_report_ratio>Actions (%)</nb_actions_report_ratio>
 		<nb_users>Users</nb_users>
 		<nb_actions_per_visit>Actions per Visit</nb_actions_per_visit>
 		<avg_time_on_site>Avg. Time on Website</avg_time_on_site>
 		<bounce_rate>Bounce Rate</bounce_rate>
 		<revenue>Revenue</revenue>
+		<revenue_report_ratio>Revenue (%)</revenue_report_ratio>
 	</columns>
 	<reportData>
 		<row>
 			<label>12</label>
 			<nb_uniq_visitors>4</nb_uniq_visitors>
+			<nb_uniq_visitors_report_ratio>50%</nb_uniq_visitors_report_ratio>
 			<nb_visits>4</nb_visits>
+			<nb_visits_report_ratio>50%</nb_visits_report_ratio>
 			<nb_actions>20</nb_actions>
+			<nb_actions_report_ratio>83.3%</nb_actions_report_ratio>
 			<nb_users>0</nb_users>
 			<revenue>$40</revenue>
+			<revenue_report_ratio>66.7%</revenue_report_ratio>
 			<nb_actions_per_visit>5</nb_actions_per_visit>
 			<avg_time_on_site>00:27:01</avg_time_on_site>
 			<bounce_rate>0%</bounce_rate>
@@ -84,10 +92,14 @@
 		<row>
 			<label>11</label>
 			<nb_uniq_visitors>4</nb_uniq_visitors>
+			<nb_uniq_visitors_report_ratio>50%</nb_uniq_visitors_report_ratio>
 			<nb_visits>4</nb_visits>
+			<nb_visits_report_ratio>50%</nb_visits_report_ratio>
 			<nb_actions>4</nb_actions>
+			<nb_actions_report_ratio>16.7%</nb_actions_report_ratio>
 			<nb_users>0</nb_users>
 			<revenue>$20</revenue>
+			<revenue_report_ratio>33.3%</revenue_report_ratio>
 			<nb_actions_per_visit>1</nb_actions_per_visit>
 			<avg_time_on_site>00:00:00</avg_time_on_site>
 			<bounce_rate>100%</bounce_rate>
@@ -95,244 +107,332 @@
 		<row>
 			<label>00</label>
 			<nb_uniq_visitors>0</nb_uniq_visitors>
+			<nb_uniq_visitors_report_ratio>0%</nb_uniq_visitors_report_ratio>
 			<nb_visits>0</nb_visits>
+			<nb_visits_report_ratio>0%</nb_visits_report_ratio>
 			<nb_actions>0</nb_actions>
+			<nb_actions_report_ratio>0%</nb_actions_report_ratio>
 			<nb_users>0</nb_users>
 			<nb_actions_per_visit>0</nb_actions_per_visit>
 			<avg_time_on_site>00:00:00</avg_time_on_site>
 			<bounce_rate>0%</bounce_rate>
 			<revenue>$0</revenue>
+			<revenue_report_ratio>0%</revenue_report_ratio>
 		</row>
 		<row>
 			<label>01</label>
 			<nb_uniq_visitors>0</nb_uniq_visitors>
+			<nb_uniq_visitors_report_ratio>0%</nb_uniq_visitors_report_ratio>
 			<nb_visits>0</nb_visits>
+			<nb_visits_report_ratio>0%</nb_visits_report_ratio>
 			<nb_actions>0</nb_actions>
+			<nb_actions_report_ratio>0%</nb_actions_report_ratio>
 			<nb_users>0</nb_users>
 			<nb_actions_per_visit>0</nb_actions_per_visit>
 			<avg_time_on_site>00:00:00</avg_time_on_site>
 			<bounce_rate>0%</bounce_rate>
 			<revenue>$0</revenue>
+			<revenue_report_ratio>0%</revenue_report_ratio>
 		</row>
 		<row>
 			<label>02</label>
 			<nb_uniq_visitors>0</nb_uniq_visitors>
+			<nb_uniq_visitors_report_ratio>0%</nb_uniq_visitors_report_ratio>
 			<nb_visits>0</nb_visits>
+			<nb_visits_report_ratio>0%</nb_visits_report_ratio>
 			<nb_actions>0</nb_actions>
+			<nb_actions_report_ratio>0%</nb_actions_report_ratio>
 			<nb_users>0</nb_users>
 			<nb_actions_per_visit>0</nb_actions_per_visit>
 			<avg_time_on_site>00:00:00</avg_time_on_site>
 			<bounce_rate>0%</bounce_rate>
 			<revenue>$0</revenue>
+			<revenue_report_ratio>0%</revenue_report_ratio>
 		</row>
 		<row>
 			<label>03</label>
 			<nb_uniq_visitors>0</nb_uniq_visitors>
+			<nb_uniq_visitors_report_ratio>0%</nb_uniq_visitors_report_ratio>
 			<nb_visits>0</nb_visits>
+			<nb_visits_report_ratio>0%</nb_visits_report_ratio>
 			<nb_actions>0</nb_actions>
+			<nb_actions_report_ratio>0%</nb_actions_report_ratio>
 			<nb_users>0</nb_users>
 			<nb_actions_per_visit>0</nb_actions_per_visit>
 			<avg_time_on_site>00:00:00</avg_time_on_site>
 			<bounce_rate>0%</bounce_rate>
 			<revenue>$0</revenue>
+			<revenue_report_ratio>0%</revenue_report_ratio>
 		</row>
 		<row>
 			<label>04</label>
 			<nb_uniq_visitors>0</nb_uniq_visitors>
+			<nb_uniq_visitors_report_ratio>0%</nb_uniq_visitors_report_ratio>
 			<nb_visits>0</nb_visits>
+			<nb_visits_report_ratio>0%</nb_visits_report_ratio>
 			<nb_actions>0</nb_actions>
+			<nb_actions_report_ratio>0%</nb_actions_report_ratio>
 			<nb_users>0</nb_users>
 			<nb_actions_per_visit>0</nb_actions_per_visit>
 			<avg_time_on_site>00:00:00</avg_time_on_site>
 			<bounce_rate>0%</bounce_rate>
 			<revenue>$0</revenue>
+			<revenue_report_ratio>0%</revenue_report_ratio>
 		</row>
 		<row>
 			<label>05</label>
 			<nb_uniq_visitors>0</nb_uniq_visitors>
+			<nb_uniq_visitors_report_ratio>0%</nb_uniq_visitors_report_ratio>
 			<nb_visits>0</nb_visits>
+			<nb_visits_report_ratio>0%</nb_visits_report_ratio>
 			<nb_actions>0</nb_actions>
+			<nb_actions_report_ratio>0%</nb_actions_report_ratio>
 			<nb_users>0</nb_users>
 			<nb_actions_per_visit>0</nb_actions_per_visit>
 			<avg_time_on_site>00:00:00</avg_time_on_site>
 			<bounce_rate>0%</bounce_rate>
 			<revenue>$0</revenue>
+			<revenue_report_ratio>0%</revenue_report_ratio>
 		</row>
 		<row>
 			<label>06</label>
 			<nb_uniq_visitors>0</nb_uniq_visitors>
+			<nb_uniq_visitors_report_ratio>0%</nb_uniq_visitors_report_ratio>
 			<nb_visits>0</nb_visits>
+			<nb_visits_report_ratio>0%</nb_visits_report_ratio>
 			<nb_actions>0</nb_actions>
+			<nb_actions_report_ratio>0%</nb_actions_report_ratio>
 			<nb_users>0</nb_users>
 			<nb_actions_per_visit>0</nb_actions_per_visit>
 			<avg_time_on_site>00:00:00</avg_time_on_site>
 			<bounce_rate>0%</bounce_rate>
 			<revenue>$0</revenue>
+			<revenue_report_ratio>0%</revenue_report_ratio>
 		</row>
 		<row>
 			<label>07</label>
 			<nb_uniq_visitors>0</nb_uniq_visitors>
+			<nb_uniq_visitors_report_ratio>0%</nb_uniq_visitors_report_ratio>
 			<nb_visits>0</nb_visits>
+			<nb_visits_report_ratio>0%</nb_visits_report_ratio>
 			<nb_actions>0</nb_actions>
+			<nb_actions_report_ratio>0%</nb_actions_report_ratio>
 			<nb_users>0</nb_users>
 			<nb_actions_per_visit>0</nb_actions_per_visit>
 			<avg_time_on_site>00:00:00</avg_time_on_site>
 			<bounce_rate>0%</bounce_rate>
 			<revenue>$0</revenue>
+			<revenue_report_ratio>0%</revenue_report_ratio>
 		</row>
 		<row>
 			<label>08</label>
 			<nb_uniq_visitors>0</nb_uniq_visitors>
+			<nb_uniq_visitors_report_ratio>0%</nb_uniq_visitors_report_ratio>
 			<nb_visits>0</nb_visits>
+			<nb_visits_report_ratio>0%</nb_visits_report_ratio>
 			<nb_actions>0</nb_actions>
+			<nb_actions_report_ratio>0%</nb_actions_report_ratio>
 			<nb_users>0</nb_users>
 			<nb_actions_per_visit>0</nb_actions_per_visit>
 			<avg_time_on_site>00:00:00</avg_time_on_site>
 			<bounce_rate>0%</bounce_rate>
 			<revenue>$0</revenue>
+			<revenue_report_ratio>0%</revenue_report_ratio>
 		</row>
 		<row>
 			<label>09</label>
 			<nb_uniq_visitors>0</nb_uniq_visitors>
+			<nb_uniq_visitors_report_ratio>0%</nb_uniq_visitors_report_ratio>
 			<nb_visits>0</nb_visits>
+			<nb_visits_report_ratio>0%</nb_visits_report_ratio>
 			<nb_actions>0</nb_actions>
+			<nb_actions_report_ratio>0%</nb_actions_report_ratio>
 			<nb_users>0</nb_users>
 			<nb_actions_per_visit>0</nb_actions_per_visit>
 			<avg_time_on_site>00:00:00</avg_time_on_site>
 			<bounce_rate>0%</bounce_rate>
 			<revenue>$0</revenue>
+			<revenue_report_ratio>0%</revenue_report_ratio>
 		</row>
 		<row>
 			<label>10</label>
 			<nb_uniq_visitors>0</nb_uniq_visitors>
+			<nb_uniq_visitors_report_ratio>0%</nb_uniq_visitors_report_ratio>
 			<nb_visits>0</nb_visits>
+			<nb_visits_report_ratio>0%</nb_visits_report_ratio>
 			<nb_actions>0</nb_actions>
+			<nb_actions_report_ratio>0%</nb_actions_report_ratio>
 			<nb_users>0</nb_users>
 			<nb_actions_per_visit>0</nb_actions_per_visit>
 			<avg_time_on_site>00:00:00</avg_time_on_site>
 			<bounce_rate>0%</bounce_rate>
 			<revenue>$0</revenue>
+			<revenue_report_ratio>0%</revenue_report_ratio>
 		</row>
 		<row>
 			<label>13</label>
 			<nb_uniq_visitors>0</nb_uniq_visitors>
+			<nb_uniq_visitors_report_ratio>0%</nb_uniq_visitors_report_ratio>
 			<nb_visits>0</nb_visits>
+			<nb_visits_report_ratio>0%</nb_visits_report_ratio>
 			<nb_actions>0</nb_actions>
+			<nb_actions_report_ratio>0%</nb_actions_report_ratio>
 			<nb_users>0</nb_users>
 			<nb_actions_per_visit>0</nb_actions_per_visit>
 			<avg_time_on_site>00:00:00</avg_time_on_site>
 			<bounce_rate>0%</bounce_rate>
 			<revenue>$0</revenue>
+			<revenue_report_ratio>0%</revenue_report_ratio>
 		</row>
 		<row>
 			<label>14</label>
 			<nb_uniq_visitors>0</nb_uniq_visitors>
+			<nb_uniq_visitors_report_ratio>0%</nb_uniq_visitors_report_ratio>
 			<nb_visits>0</nb_visits>
+			<nb_visits_report_ratio>0%</nb_visits_report_ratio>
 			<nb_actions>0</nb_actions>
+			<nb_actions_report_ratio>0%</nb_actions_report_ratio>
 			<nb_users>0</nb_users>
 			<nb_actions_per_visit>0</nb_actions_per_visit>
 			<avg_time_on_site>00:00:00</avg_time_on_site>
 			<bounce_rate>0%</bounce_rate>
 			<revenue>$0</revenue>
+			<revenue_report_ratio>0%</revenue_report_ratio>
 		</row>
 		<row>
 			<label>15</label>
 			<nb_uniq_visitors>0</nb_uniq_visitors>
+			<nb_uniq_visitors_report_ratio>0%</nb_uniq_visitors_report_ratio>
 			<nb_visits>0</nb_visits>
+			<nb_visits_report_ratio>0%</nb_visits_report_ratio>
 			<nb_actions>0</nb_actions>
+			<nb_actions_report_ratio>0%</nb_actions_report_ratio>
 			<nb_users>0</nb_users>
 			<nb_actions_per_visit>0</nb_actions_per_visit>
 			<avg_time_on_site>00:00:00</avg_time_on_site>
 			<bounce_rate>0%</bounce_rate>
 			<revenue>$0</revenue>
+			<revenue_report_ratio>0%</revenue_report_ratio>
 		</row>
 		<row>
 			<label>16</label>
 			<nb_uniq_visitors>0</nb_uniq_visitors>
+			<nb_uniq_visitors_report_ratio>0%</nb_uniq_visitors_report_ratio>
 			<nb_visits>0</nb_visits>
+			<nb_visits_report_ratio>0%</nb_visits_report_ratio>
 			<nb_actions>0</nb_actions>
+			<nb_actions_report_ratio>0%</nb_actions_report_ratio>
 			<nb_users>0</nb_users>
 			<nb_actions_per_visit>0</nb_actions_per_visit>
 			<avg_time_on_site>00:00:00</avg_time_on_site>
 			<bounce_rate>0%</bounce_rate>
 			<revenue>$0</revenue>
+			<revenue_report_ratio>0%</revenue_report_ratio>
 		</row>
 		<row>
 			<label>17</label>
 			<nb_uniq_visitors>0</nb_uniq_visitors>
+			<nb_uniq_visitors_report_ratio>0%</nb_uniq_visitors_report_ratio>
 			<nb_visits>0</nb_visits>
+			<nb_visits_report_ratio>0%</nb_visits_report_ratio>
 			<nb_actions>0</nb_actions>
+			<nb_actions_report_ratio>0%</nb_actions_report_ratio>
 			<nb_users>0</nb_users>
 			<nb_actions_per_visit>0</nb_actions_per_visit>
 			<avg_time_on_site>00:00:00</avg_time_on_site>
 			<bounce_rate>0%</bounce_rate>
 			<revenue>$0</revenue>
+			<revenue_report_ratio>0%</revenue_report_ratio>
 		</row>
 		<row>
 			<label>18</label>
 			<nb_uniq_visitors>0</nb_uniq_visitors>
+			<nb_uniq_visitors_report_ratio>0%</nb_uniq_visitors_report_ratio>
 			<nb_visits>0</nb_visits>
+			<nb_visits_report_ratio>0%</nb_visits_report_ratio>
 			<nb_actions>0</nb_actions>
+			<nb_actions_report_ratio>0%</nb_actions_report_ratio>
 			<nb_users>0</nb_users>
 			<nb_actions_per_visit>0</nb_actions_per_visit>
 			<avg_time_on_site>00:00:00</avg_time_on_site>
 			<bounce_rate>0%</bounce_rate>
 			<revenue>$0</revenue>
+			<revenue_report_ratio>0%</revenue_report_ratio>
 		</row>
 		<row>
 			<label>19</label>
 			<nb_uniq_visitors>0</nb_uniq_visitors>
+			<nb_uniq_visitors_report_ratio>0%</nb_uniq_visitors_report_ratio>
 			<nb_visits>0</nb_visits>
+			<nb_visits_report_ratio>0%</nb_visits_report_ratio>
 			<nb_actions>0</nb_actions>
+			<nb_actions_report_ratio>0%</nb_actions_report_ratio>
 			<nb_users>0</nb_users>
 			<nb_actions_per_visit>0</nb_actions_per_visit>
 			<avg_time_on_site>00:00:00</avg_time_on_site>
 			<bounce_rate>0%</bounce_rate>
 			<revenue>$0</revenue>
+			<revenue_report_ratio>0%</revenue_report_ratio>
 		</row>
 		<row>
 			<label>20</label>
 			<nb_uniq_visitors>0</nb_uniq_visitors>
+			<nb_uniq_visitors_report_ratio>0%</nb_uniq_visitors_report_ratio>
 			<nb_visits>0</nb_visits>
+			<nb_visits_report_ratio>0%</nb_visits_report_ratio>
 			<nb_actions>0</nb_actions>
+			<nb_actions_report_ratio>0%</nb_actions_report_ratio>
 			<nb_users>0</nb_users>
 			<nb_actions_per_visit>0</nb_actions_per_visit>
 			<avg_time_on_site>00:00:00</avg_time_on_site>
 			<bounce_rate>0%</bounce_rate>
 			<revenue>$0</revenue>
+			<revenue_report_ratio>0%</revenue_report_ratio>
 		</row>
 		<row>
 			<label>21</label>
 			<nb_uniq_visitors>0</nb_uniq_visitors>
+			<nb_uniq_visitors_report_ratio>0%</nb_uniq_visitors_report_ratio>
 			<nb_visits>0</nb_visits>
+			<nb_visits_report_ratio>0%</nb_visits_report_ratio>
 			<nb_actions>0</nb_actions>
+			<nb_actions_report_ratio>0%</nb_actions_report_ratio>
 			<nb_users>0</nb_users>
 			<nb_actions_per_visit>0</nb_actions_per_visit>
 			<avg_time_on_site>00:00:00</avg_time_on_site>
 			<bounce_rate>0%</bounce_rate>
 			<revenue>$0</revenue>
+			<revenue_report_ratio>0%</revenue_report_ratio>
 		</row>
 		<row>
 			<label>22</label>
 			<nb_uniq_visitors>0</nb_uniq_visitors>
+			<nb_uniq_visitors_report_ratio>0%</nb_uniq_visitors_report_ratio>
 			<nb_visits>0</nb_visits>
+			<nb_visits_report_ratio>0%</nb_visits_report_ratio>
 			<nb_actions>0</nb_actions>
+			<nb_actions_report_ratio>0%</nb_actions_report_ratio>
 			<nb_users>0</nb_users>
 			<nb_actions_per_visit>0</nb_actions_per_visit>
 			<avg_time_on_site>00:00:00</avg_time_on_site>
 			<bounce_rate>0%</bounce_rate>
 			<revenue>$0</revenue>
+			<revenue_report_ratio>0%</revenue_report_ratio>
 		</row>
 		<row>
 			<label>23</label>
 			<nb_uniq_visitors>0</nb_uniq_visitors>
+			<nb_uniq_visitors_report_ratio>0%</nb_uniq_visitors_report_ratio>
 			<nb_visits>0</nb_visits>
+			<nb_visits_report_ratio>0%</nb_visits_report_ratio>
 			<nb_actions>0</nb_actions>
+			<nb_actions_report_ratio>0%</nb_actions_report_ratio>
 			<nb_users>0</nb_users>
 			<nb_actions_per_visit>0</nb_actions_per_visit>
 			<avg_time_on_site>00:00:00</avg_time_on_site>
 			<bounce_rate>0%</bounce_rate>
 			<revenue>$0</revenue>
+			<revenue_report_ratio>0%</revenue_report_ratio>
 		</row>
 	</reportData>
 	<reportMetadata>
