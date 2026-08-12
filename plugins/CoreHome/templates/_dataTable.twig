@@ -18,7 +18,6 @@ using the show_footer to control the header actions as well since this is going 
 of moving the table actions to the top of the report for all reports, at which point the config for the report
 can be renamed to show_header and show_header_icons
 #}
-{% set showTableActionsInHeader = properties.show_footer and properties.show_footer_icons %}
 
 {# The header must stay outside `.dataTable`, which an ajax reload replaces wholesale without a
    `showtitle` parameter (see dataTable.js) - inside it, it would not survive the first sort. #}
@@ -61,14 +60,6 @@ can be renamed to show_header and show_header_icons
         {% if error is defined %}
             <div vue-entry="CoreHome.Alert" severity="danger">{{ error.message }}</div>
         {% else %}
-            {% if showTableActionsInHeader %}
-                <div class="row dataTableHeaderControls">
-                    <div class="col dataTableControls s12">
-                        {% include "@CoreHome/_dataTableActions.twig" with { placement: 'top' } %}
-                    </div>
-                </div>
-            {% endif %}
-
             {% if properties.show_header_message is defined and properties.show_header_message is not empty %}
                 <div class='datatableHeaderMessage'>{{ properties.show_header_message | raw }}</div>
             {% endif %}

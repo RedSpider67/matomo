@@ -73,10 +73,59 @@
     flex: none;
     display: flex;
     align-items: safe center;
+    // Matches __widgetControls: opacity, not display, so the trigger stays keyboard-focusable
+    // when a host opts into hover-reveal.
+    opacity: 1;
+    transition: opacity 0.15s ease;
 
     &:empty {
       display: none;
     }
+  }
+
+  .reportHeader__actions {
+    position: relative;
+  }
+
+  .reportHeader__actionsTrigger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    background: transparent;
+    border: 0;
+    border-radius: 8px;
+    color: @theme-color-text-lighter;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    appearance: none;
+
+    &:hover {
+      color: @theme-color-text;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus-visible {
+      outline: 2px solid @theme-color-focus-ring;
+    }
+  }
+
+  // The panel is closed by default; ExpandOnClick toggles `.expanded` on `.reportHeader__actions`.
+  // Anchored to the right of the trigger so a wide menu grows inwards instead of off the page.
+  .reportHeader__actionsMenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: 10;
+  }
+
+  .reportHeader__actions.expanded .reportHeader__actionsMenu {
+    display: block;
   }
 }
 
@@ -105,11 +154,17 @@
 // hook (e.g. the dashboard widget), hide the controls until the host is hovered or a control
 // is focused. Absent the hook the controls stay visible (base rule above), which is how a
 // maximised widget keeps them on. The hook is reference-only — see CSS rules, rule 31.
-.__reportHeader-onHover .reportHeader__widgetControls {
+// The actions trigger follows the same rule: the footer bar it replaces was hover-revealed on
+// dashboards too (_dataTable.less, `.dataTableControls .dataTableAction`), so this keeps a
+// dashboard looking as quiet at rest as it does today.
+.__reportHeader-onHover .reportHeader__widgetControls,
+.__reportHeader-onHover .reportHeader__toolbar {
   opacity: 0;
 }
 
 .__reportHeader-onHover:hover .reportHeader__widgetControls,
-.__reportHeader-onHover:focus-within .reportHeader__widgetControls {
+.__reportHeader-onHover:focus-within .reportHeader__widgetControls,
+.__reportHeader-onHover:hover .reportHeader__toolbar,
+.__reportHeader-onHover:focus-within .reportHeader__toolbar {
   opacity: 1;
 }

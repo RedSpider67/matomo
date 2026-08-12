@@ -7,212 +7,203 @@
 
 <template>
   <div v-if="showFooter && showFooterIcons">
-    <a
-      v-dropdown-button
-      class="dropdown-button dropdownConfigureIcon dataTableAction"
-      :class="{highlighted: isAnyConfigureIconHighlighted}"
-      href=""
-      @click.prevent
-      :data-target="`dropdownConfigure${randomIdForDropdown}`"
-      :title="translate('CoreHome_ReportConfigure')"
-      style="margin-right:3.5px"
-      v-if="hasConfigItems && (isAnyConfigureIconHighlighted || isTableView)"
-    >
-      <span class="icon-configure"></span>
-    </a>
+    <!-- Report actions live in the report header, inside the single menu its 3-dots trigger
+         opens. Three lists rather than one: `ul.tableConfiguration` and `.dataTableFooterIcons`
+         are the hooks every dataTable.js handler binds to, and adjacent lists carry no margin,
+         so this still reads as one continuous menu. -->
+    <template v-if="isInHeader">
+      <ul
+        :id="`dropdownConfigure${randomIdForDropdown}`"
+        class="mtm-dropdownPanel__menu tableConfiguration"
+      >
+        <li v-if="showFlattenTable" class="mtm-dropdownPanel__menuItem">
+          <div
+            class="mtm-dropdownPanel__menuLink configItem dataTableFlatten"
+            v-html="$sanitize(flattenItemText)"
+          />
+        </li>
+        <li v-if="showDimensionsConfigItem" class="mtm-dropdownPanel__menuItem">
+          <div
+            class="mtm-dropdownPanel__menuLink configItem dataTableShowDimensions"
+            v-html="$sanitize(showDimensionsText)"
+          />
+        </li>
+        <li v-if="showFlatConfigItem" class="mtm-dropdownPanel__menuItem">
+          <div
+            class="mtm-dropdownPanel__menuLink configItem dataTableIncludeAggregateRows"
+            v-html="$sanitize(includeAggregateRowsText)"
+          />
+        </li>
+        <li v-if="showTotalsConfigItem" class="mtm-dropdownPanel__menuItem">
+          <div
+            class="mtm-dropdownPanel__menuLink configItem dataTableShowTotalsRow"
+            v-html="$sanitize(keepTotalsRowText)"
+          />
+        </li>
+        <li v-if="showPercentageValuesConfigItem" class="mtm-dropdownPanel__menuItem">
+          <div
+            class="mtm-dropdownPanel__menuLink configItem dataTableShowPercentageValues"
+            :aria-label="percentageValuesLabel"
+            v-html="$sanitize(percentageValuesText)"
+          />
+        </li>
+        <li v-if="showExcludeLowPopulation" class="mtm-dropdownPanel__menuItem">
+          <div
+            class="mtm-dropdownPanel__menuLink configItem dataTableExcludeLowPopulation"
+            v-html="$sanitize(excludeLowPopText)"
+          />
+        </li>
+        <li v-if="showPivotBySubtable" class="mtm-dropdownPanel__menuItem">
+          <div
+            class="mtm-dropdownPanel__menuLink configItem dataTablePivotBySubtable"
+            v-html="$sanitize(pivotByText)"
+          />
+        </li>
+      </ul>
 
-    <a v-if="hasFooterIconsToShow"
-      class="dropdown-button dataTableAction activateVisualizationSelection"
-      v-dropdown-button
-      href=""
-      :data-target="`dropdownVisualizations${randomIdForDropdown}`"
-      style="margin-right:3.5px"
-      @click.prevent
-    >
-      <span
-        v-if="/^icon-/.test(activeFooterIcon || '')"
-        :title="translate('CoreHome_ChangeVisualization')"
-        :class="activeFooterIcon"
-      ></span>
-      <img
-        v-else
-        :title="translate('CoreHome_ChangeVisualization')"
-        width="16"
-        height="16"
-        :src="activeFooterIcon"
-      />
-    </a>
-
-    <ul
-      v-if="showFooterIcons"
-      :id="`dropdownVisualizations${randomIdForDropdown}`"
-      class="dropdown-content dataTableFooterIcons"
-    >
-      <Passthrough v-for="(footerIconGroup, index) in footerIcons" :key="index">
-        <li
-          v-for="footerIcon in footerIconGroup.buttons.filter((i) => !!i.icon)"
-          :key="footerIcon.id"
-        >
+      <ul class="mtm-dropdownPanel__menu">
+        <li v-if="showExportAsImageIcon" class="mtm-dropdownPanel__menuItem">
           <a
-            :class="`${footerIconGroup.class} tableIcon
-              ${activeFooterIconIds.indexOf(footerIcon.id) !== -1 ? 'activeIcon' : ''}`"
-            :data-footer-icon-id="footerIcon.id"
+            class="mtm-dropdownPanel__menuLink dataTableAction tableIcon"
+            href=""
+            :id="`dataTableExportAsImageIcon-${placement}`"
+            @click.prevent="showExportImage($event)"
           >
-            <span
-              v-if="/^icon-/.test(footerIcon.icon || '')"
-              :title="footerIcon.title"
-              :class="footerIcon.icon"
-              style="margin-right:5.5px"
-            ></span>
-            <img
-              v-else
-              width="16"
-              height="16"
-              :title="footerIcon.title"
-              :src="footerIcon.icon"
-              style="margin-right:5.5px"
-            />
-            <span v-if="footerIcon.title">{{ footerIcon.title }}</span>
+            <span class="mtm-dropdownPanel__menuIcon icon-image" />
+            <span class="mtm-dropdownPanel__menuLabel">
+              {{ translate('General_ExportAsImage') }}
+            </span>
           </a>
         </li>
-        <li class="divider"></li>
-      </Passthrough>
-      <li class="divider"></li>
-    </ul>
-
-    <a
-      v-if="showExport"
-      class="dataTableAction activateExportSelection"
-      v-report-export="{
-        reportTitle,
-        requestParams,
-        apiMethod: apiMethodToRequestDataTable,
-        reportFormats,
-        maxFilterLimit,
-        canExportFlat: exportSupportsFlat,
-      }"
-      :title="translate('General_ExportThisReport')"
-      href=""
-      style="margin-right:3.5px"
-      @click.prevent
-    ><span class="icon-export"></span></a>
-
-    <a
-      v-if="showExportAsImageIcon"
-      class="dataTableAction tableIcon"
-      href=""
-      :id="`dataTableExportAsImageIcon-${placement}`"
-      @click.prevent="showExportImage($event)"
-      :title="translate('General_ExportAsImage')"
-      style="margin-right:3.5px"
-    >
-      <span class="icon-image"></span>
-    </a>
-
-    <a
-      v-if="showAnnotations"
-      class="dataTableAction annotationView"
-      href=""
-      :title="translate('Annotations_Annotations')"
-      @click.prevent
-      style="margin-right:3.5px"
-    ><span class="icon-annotation"></span></a>
-
-    <a
-      v-for="action in dataTableActions"
-      :key="action.id"
-      :class="`dataTableAction ${action.id}`"
-      href=""
-      @click.prevent
-      :title="action.title"
-      style="margin-right:3.5px"
-    >
-      <span v-if="/^icon-/.test(action.icon || '')" :class="action.icon"></span>
-      <img v-else width="16" height="16" :title="action.title" :src="action.icon"/>
-    </a>
-
-    <ul
-      :id="`dropdownConfigure${randomIdForDropdown}`"
-      class="dropdown-content tableConfiguration"
-    >
-      <li v-if="showFlattenTable">
-        <div
-          class="configItem dataTableFlatten"
-          v-html="$sanitize(flattenItemText)"
-        ></div>
-      </li>
-      <li
-        v-if="showDimensionsConfigItem"
-      >
-        <div
-          class="configItem dataTableShowDimensions"
-          v-html="$sanitize(showDimensionsText)"
-        ></div>
-      </li>
-      <li v-if="showFlatConfigItem">
-        <div
-          class="configItem dataTableIncludeAggregateRows"
-          v-html="$sanitize(includeAggregateRowsText)"
-        ></div>
-      </li>
-      <li v-if="showTotalsConfigItem">
-        <div
-          class="configItem dataTableShowTotalsRow"
-          v-html="$sanitize(keepTotalsRowText)"
-        ></div>
-      </li>
-      <li v-if="showPercentageValuesConfigItem">
-        <div
-          class="configItem dataTableShowPercentageValues"
-          :aria-label="percentageValuesLabel"
-          v-html="$sanitize(percentageValuesText)"
-        ></div>
-      </li>
-      <li v-if="showExcludeLowPopulation">
-        <div
-          class="configItem dataTableExcludeLowPopulation"
-          v-html="$sanitize(excludeLowPopText)"
-        ></div>
-      </li>
-      <li v-if="showPivotBySubtable">
-        <div
-          class="configItem dataTablePivotBySubtable"
-          v-html="$sanitize(pivotByText)"
-        ></div>
-      </li>
-    </ul>
-
-    <a
-      v-if="showPeriods"
-      v-dropdown-button
-      class="dropdown-button dataTableAction activatePeriodsSelection"
-      href=""
-      @click.prevent
-      :title="translate('CoreHome_ChangePeriod')"
-      :data-target="`dropdownPeriods${randomIdForDropdown}`"
-    >
-      <div>
-        <span class="icon-calendar"></span>
-        <span class="periodName">
-          {{ translations[clientSideParameters.period] || clientSideParameters.period }}
-        </span>
-      </div>
-    </a>
-    <ul
-      v-if="showPeriods"
-      :id="`dropdownPeriods${randomIdForDropdown}`"
-      class="dropdown-content dataTablePeriods"
-    >
-      <li v-for="selectablePeriod in selectablePeriods" :key="selectablePeriod">
-        <a
-          :data-period="selectablePeriod"
-          :class="`tableIcon ${clientSideParameters.period === selectablePeriod
-            ? 'activeIcon' : ''}`"
+        <li v-if="showExport" class="mtm-dropdownPanel__menuItem">
+          <a
+            class="mtm-dropdownPanel__menuLink dataTableAction activateExportSelection"
+            v-report-export="{
+              reportTitle,
+              requestParams,
+              apiMethod: apiMethodToRequestDataTable,
+              reportFormats,
+              maxFilterLimit,
+              canExportFlat: exportSupportsFlat,
+            }"
+            href=""
+            @click.prevent
+          >
+            <span class="mtm-dropdownPanel__menuIcon icon-export" />
+            <span class="mtm-dropdownPanel__menuLabel">{{ translate('General_Export') }}</span>
+          </a>
+        </li>
+        <li
+          v-for="action in dataTableActions"
+          :key="action.id"
+          class="mtm-dropdownPanel__menuItem"
         >
-          <span>{{ translations[selectablePeriod] || selectablePeriod }}</span>
-        </a>
-      </li>
-    </ul>
+          <a
+            :class="`mtm-dropdownPanel__menuLink dataTableAction ${action.id}`"
+            href=""
+            @click.prevent
+          >
+            <span
+              v-if="/^icon-/.test(action.icon || '')"
+              class="mtm-dropdownPanel__menuIcon"
+              :class="action.icon"
+            />
+            <img
+              v-else
+              class="mtm-dropdownPanel__menuIcon"
+              width="16"
+              height="16"
+              :src="action.icon"
+              alt=""
+            />
+            <span class="mtm-dropdownPanel__menuLabel">{{ action.title }}</span>
+          </a>
+        </li>
+      </ul>
+
+      <ul
+        :id="`dropdownVisualizations${randomIdForDropdown}`"
+        class="mtm-dropdownPanel__menu dataTableFooterIcons"
+      >
+        <Passthrough v-for="(footerIconGroup, index) in footerIcons" :key="index">
+          <li
+            v-if="index > 0"
+            class="mtm-dropdownPanel__separator"
+            role="separator"
+          />
+          <li
+            v-for="footerIcon in footerIconGroup.buttons.filter((i) => !!i.icon)"
+            :key="footerIcon.id"
+            class="mtm-dropdownPanel__menuItem"
+          >
+            <a
+              :class="`mtm-dropdownPanel__menuLink ${footerIconGroup.class} tableIcon
+                ${activeFooterIconIds.indexOf(footerIcon.id) !== -1 ? 'activeIcon' : ''}`"
+              :data-footer-icon-id="footerIcon.id"
+            >
+              <span
+                v-if="/^icon-/.test(footerIcon.icon || '')"
+                class="mtm-dropdownPanel__menuIcon"
+                :class="footerIcon.icon"
+              />
+              <img
+                v-else
+                class="mtm-dropdownPanel__menuIcon"
+                width="16"
+                height="16"
+                :src="footerIcon.icon"
+                alt=""
+              />
+              <span class="mtm-dropdownPanel__menuLabel">{{ footerIcon.title }}</span>
+            </a>
+          </li>
+        </Passthrough>
+      </ul>
+    </template>
+
+    <!-- The footer keeps the actions that have not moved yet. -->
+    <template v-else>
+      <a
+        v-if="showAnnotations"
+        class="dataTableAction annotationView"
+        href=""
+        :title="translate('Annotations_Annotations')"
+        @click.prevent
+        style="margin-right:3.5px"
+      ><span class="icon-annotation" /></a>
+
+      <a
+        v-if="showPeriods"
+        v-dropdown-button
+        class="dropdown-button dataTableAction activatePeriodsSelection"
+        href=""
+        @click.prevent
+        :title="translate('CoreHome_ChangePeriod')"
+        :data-target="`dropdownPeriods${randomIdForDropdown}`"
+      >
+        <div>
+          <span class="icon-calendar" />
+          <span class="periodName">
+            {{ translations[clientSideParameters.period] || clientSideParameters.period }}
+          </span>
+        </div>
+      </a>
+      <ul
+        v-if="showPeriods"
+        :id="`dropdownPeriods${randomIdForDropdown}`"
+        class="dropdown-content dataTablePeriods"
+      >
+        <li v-for="selectablePeriod in selectablePeriods" :key="selectablePeriod">
+          <a
+            :data-period="selectablePeriod"
+            :class="`tableIcon ${clientSideParameters.period === selectablePeriod
+              ? 'activeIcon' : ''}`"
+          >
+            <span>{{ translations[selectablePeriod] || selectablePeriod }}</span>
+          </a>
+        </li>
+      </ul>
+    </template>
   </div>
 </template>
 
@@ -348,6 +339,11 @@ export default defineComponent({
     },
   },
   computed: {
+    // The report header renders the actions as one menu; the footer still renders the ones that
+    // have not moved yet as icon buttons.
+    isInHeader(): boolean {
+      return this.placement === 'header';
+    },
     randomIdForDropdown(): number {
       return Math.floor(Math.random() * 999999);
     },
