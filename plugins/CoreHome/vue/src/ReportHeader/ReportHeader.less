@@ -125,7 +125,10 @@
     position: absolute;
     top: 100%;
     right: 0;
-    z-index: 10;
+    // Above the table it overlays: `thead` is sticky at 10 (150 with `.with-z-index`) and the
+    // cells sit at 99, so a lower value lets the table paint over the panel and swallow the
+    // clicks meant for it. Still below the row actions at 1000.
+    z-index: 200;
   }
 
   .reportHeader__actions.expanded .reportHeader__actionsMenu {

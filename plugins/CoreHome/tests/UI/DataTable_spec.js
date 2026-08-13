@@ -24,8 +24,10 @@ describe('DataTable', function () {
     actionsTrigger: `${widgetSelector} .reportHeader__actionsTrigger`,
     actionsMenu: `${widgetSelector} .reportHeader__actionsMenu`,
     visualizationButtons: `${widgetSelector} .reportHeader__actionsMenu .dataTableFooterIcons .tableIcon[data-footer-icon-id]`,
-    totalsRowToggle: '.dataTableShowTotalsRow',
-    percentageValuesToggle: '.dataTableShowPercentageValues',
+    // Scoped to the widget: the page shows several reports and each renders its own copy of the
+    // menu in its own header, so an unscoped selector picks whichever comes first in the document.
+    totalsRowToggle: `${widgetSelector} .dataTableShowTotalsRow`,
+    percentageValuesToggle: `${widgetSelector} .dataTableShowPercentageValues`,
     // scoped to the widget: the page shows four reports, each with its own header search
     searchInput: `${widgetSelector} .reportHeader__search .mtm-searchInput__input`,
     totalsRow: `${widgetSelector} table.dataTable tr.totalsRow`,
