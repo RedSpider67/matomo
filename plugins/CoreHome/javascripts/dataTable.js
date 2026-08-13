@@ -424,6 +424,7 @@ $.extend(DataTable.prototype, UIControl.prototype, {
         self.handleExportBox(domElem);
         self.applyCosmetics(domElem);
         self.handleSubDataTable(domElem);
+        self.syncReportHeaderActions(domElem);
         self.handleConfigurationBox(domElem);
         self.handleSearchBox(domElem);
         self.handleColumnDocumentation(domElem);
@@ -2034,6 +2035,41 @@ $.extend(DataTable.prototype, UIControl.prototype, {
         }
 
         return $scope;
+    },
+
+    // The report header is rendered outside the table so an ajax reload cannot replace it, which
+    // means its actions menu keeps describing the report as it was when the page was built: after
+    // flattening, "Show dimensions separately" would never appear, and the visualisation list would
+    // keep marking the old one as active. The reloaded footer carries the fresh values for the same
+    // component, so copy them across rather than deriving them a second time.
+    syncReportHeaderActions: function (domElem) {
+        var header = this._findReportHeaderApp(domElem);
+        if (!header || !header.app) {
+            return;
+        }
+
+        var footerApp = $('[vue-entry="CoreHome.DataTableActions"]', domElem).first()
+            .data('vueAppInstance');
+        if (!footerApp) {
+            return;
+        }
+
+        // Everything the menu renders from. The title and its help are pushed separately, by
+        // replaceReportTitleAndHelp(), because a related report changes those and not these.
+        var props = [
+            'footerIcons_', 'viewDataTable_', 'clientSideParameters_', 'isDataTableEmpty_',
+            'showFlattenTable_', 'reportSupportsFlatten_', 'reportSupportsPercentageValues_',
+            'exportSupportsFlatten_', 'hasMultipleDimensions_', 'showTotalsRow_',
+            'showExcludeLowPopulation_', 'showPivotBySubtable_', 'dataTableActions_',
+            'showExport_', 'showExportAsImageIcon_', 'requestParams_', 'maxFilterLimit_',
+            'apiMethodToRequestDataTable_', 'pivotDimensionName_',
+        ];
+
+        props.forEach(function (prop) {
+            if (typeof footerApp[prop] !== 'undefined') {
+                header.app[prop] = footerApp[prop];
+            }
+        });
     },
 
     // Returns { $el, app } for the shared ReportHeader Vue app that titles this report, or null.
