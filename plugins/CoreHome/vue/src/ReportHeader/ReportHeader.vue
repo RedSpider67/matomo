@@ -64,6 +64,7 @@
       <div class="reportHeader__toolbar">
         <div
           v-if="showActions"
+          ref="actions"
           class="reportHeader__actions"
           v-expand-on-click="{ expander: 'actionsTrigger' }"
         >
@@ -77,7 +78,10 @@
             <span class="icon-more-verti" aria-hidden="true" />
           </button>
 
-          <div class="reportHeader__actionsMenu">
+          <!-- ExpandOnClick only closes on a click *outside* the element, so picking an action
+               would otherwise leave the menu hanging open over the reloading report. The
+               dropdown it replaces closed on item click, so match that. -->
+          <div class="reportHeader__actionsMenu" @click="closeActions">
             <div class="mtm-dropdownPanel mtm-dropdownPanel--wide">
               <DataTableActions
                 placement="header"
@@ -380,6 +384,9 @@ export default defineComponent({
       if (this.titleClickable) {
         this.$emit('titleClick');
       }
+    },
+    closeActions() {
+      (this.$refs.actions as HTMLElement | undefined)?.classList.remove('expanded');
     },
     onControl(intent: string) {
       // Re-emit for Vue-native consumers...

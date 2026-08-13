@@ -83,7 +83,7 @@ describe("PagePerformance", function () {
         await page.goto("?" + urlBase + "#?" + generalParams + "&category=General_Actions&subcategory=General_Pages");
 
         // make report flattened
-        await page.click('.dropdownConfigureIcon');
+        await page.click('.reportHeader__actionsTrigger');
         await page.click('.dataTableFlatten');
         await page.waitForNetworkIdle();
 
@@ -110,8 +110,8 @@ describe("PagePerformance", function () {
     it("should show new table with performance metrics visualization in selection", async function () {
         await page.goto("?module=Widgetize&action=iframe&disableLink=0&widget=1&moduleToWidgetize=Actions&actionToWidgetize=getPageUrls&" + generalParams);
 
-        // hover visualization selection
-        const icon = await page.jQuery('.activateVisualizationSelection:last');
+        // open the report actions menu
+        const icon = await page.jQuery('.reportHeader__actionsTrigger:last');
         await icon.click();
         await page.waitForTimeout(500); // animation
 

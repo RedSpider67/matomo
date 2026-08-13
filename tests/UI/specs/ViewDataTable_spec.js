@@ -28,7 +28,7 @@ describe("ViewDataTableTest", function () { // TODO: should remove Test suffix f
     });
 
     it("should load all columns when all columns clicked", async function () {
-        await page.click('.activateVisualizationSelection > span');
+        await page.click('.reportHeader__actionsTrigger');
         await page.click('.tableIcon[data-footer-icon-id=tableAllColumns]');
         await page.mouse.move(-10, -10);
         await page.waitForNetworkIdle();
@@ -50,13 +50,13 @@ describe("ViewDataTableTest", function () { // TODO: should remove Test suffix f
     });
 
     it("should show all available visualizations for this report", async function () {
-        await page.click('.activateVisualizationSelection > span');
+        await page.click('.reportHeader__actionsTrigger');
         await page.mouse.move(-10, -10);
         await page.waitForTimeout(1000); // wait for animation
 
         // Note: The selection captured in screenshot is cut of, as the available space in the
         // widget's iframe is too small, so materialize crops the selection into available space.
-        const element = await page.$('.dataTableFooterIcons');
+        const element = await page.$('.reportHeader__actionsMenu');
         expect(await element.screenshot()).to.matchImage('5_visualizations');
     });
 
@@ -68,28 +68,28 @@ describe("ViewDataTableTest", function () { // TODO: should remove Test suffix f
     });
 
     it("should load bar graph when bar graph footer icon clicked", async function () {
-        await page.click('.activateVisualizationSelection > span');
+        await page.click('.reportHeader__actionsTrigger');
         await page.click('.tableIcon[data-footer-icon-id=graphVerticalBar]');
         await page.waitForNetworkIdle();
         expect(await page.screenshot({ fullPage: true })).to.matchImage('6_bar_graph');
     });
 
     it("should load pie graph when pie graph footer icon clicked", async function () {
-        await page.click('.activateVisualizationSelection > span');
+        await page.click('.reportHeader__actionsTrigger');
         await page.click('.tableIcon[data-footer-icon-id=graphPie]');
         await page.waitForNetworkIdle();
         expect(await page.screenshot({ fullPage: true })).to.matchImage('7_pie_graph');
     });
 
     it("should load a tag cloud when tag cloud footer icon clicked", async function () {
-        await page.click('.activateVisualizationSelection > span');
+        await page.click('.reportHeader__actionsTrigger');
         await page.click('.tableIcon[data-footer-icon-id=cloud]');
         await page.waitForNetworkIdle();
         expect(await page.screenshot({ fullPage: true })).to.matchImage('8_tag_cloud');
     });
 
     it("should load normal table when normal table footer icon clicked", async function () {
-        await page.click('.activateVisualizationSelection > span');
+        await page.click('.reportHeader__actionsTrigger');
         await page.click('.tableIcon[data-footer-icon-id=table]');
         await page.waitForNetworkIdle();
         await page.mouse.move(-10, -10); // mae sure no row is highlighted
@@ -112,7 +112,7 @@ describe("ViewDataTableTest", function () { // TODO: should remove Test suffix f
     });
 
     it("should flatten the table when the flatten link is clicked", async function () {
-        await page.click('.dropdownConfigureIcon');
+        await page.click('.reportHeader__actionsTrigger');
         await page.click('.dataTableFlatten');
         await page.waitForNetworkIdle();
         await page.mouse.move(-10, -10);
@@ -120,7 +120,7 @@ describe("ViewDataTableTest", function () { // TODO: should remove Test suffix f
     });
 
     it("should show dimensions separately when option is clicked", async function () {
-        await page.click('.dropdownConfigureIcon');
+        await page.click('.reportHeader__actionsTrigger');
         await page.click('.dataTableShowDimensions');
         await page.waitForNetworkIdle();
         await page.mouse.move(-10, -10);
@@ -140,7 +140,7 @@ describe("ViewDataTableTest", function () { // TODO: should remove Test suffix f
     });
 
     it("search should still work when showing dimensions combined again", async function () {
-        await page.click('.dropdownConfigureIcon');
+        await page.click('.reportHeader__actionsTrigger');
         await page.click('.dataTableShowDimensions');
         await page.mouse.move(-10, -10);
         await page.waitForNetworkIdle();
@@ -148,7 +148,7 @@ describe("ViewDataTableTest", function () { // TODO: should remove Test suffix f
     });
 
     it("search should still work when switching to back to separate dimensions", async function () {
-        await page.click('.dropdownConfigureIcon');
+        await page.click('.reportHeader__actionsTrigger');
         await page.click('.dataTableShowDimensions');
         await page.mouse.move(-10, -10);
         await page.waitForNetworkIdle();
@@ -160,7 +160,7 @@ describe("ViewDataTableTest", function () { // TODO: should remove Test suffix f
     it("should show aggregate rows when the aggregate rows option is clicked", async function () {
         await page.goto(url.replace(/filter_limit=5/, 'filter_limit=10') + '&flat=1');
         await page.waitForNetworkIdle();
-        await page.click('.dropdownConfigureIcon');
+        await page.click('.reportHeader__actionsTrigger');
         await page.click('.dataTableIncludeAggregateRows');
         await page.mouse.move(-10, -10);
         await page.waitForNetworkIdle();
@@ -168,7 +168,7 @@ describe("ViewDataTableTest", function () { // TODO: should remove Test suffix f
     });
 
     it("should make the report hierarchical when the flatten link is clicked again", async function () {
-        await page.click('.dropdownConfigureIcon');
+        await page.click('.reportHeader__actionsTrigger');
         await page.click('.dataTableFlatten');
         await page.mouse.move(-10, -10);
         await page.waitForNetworkIdle();
@@ -230,7 +230,7 @@ describe("ViewDataTableTest", function () { // TODO: should remove Test suffix f
 
     it("should show the totals row when the config link is clicked", async function () {
         await page.goto(url);
-        await page.click('.dropdownConfigureIcon');
+        await page.click('.reportHeader__actionsTrigger');
         await page.click('.dataTableShowTotalsRow');
         await page.mouse.move(-10, -10);
         await page.waitForNetworkIdle();
@@ -255,7 +255,7 @@ describe("ViewDataTableTest", function () { // TODO: should remove Test suffix f
             .replace('moduleToWidgetize=Referrers', 'moduleToWidgetize=Actions')
             .replace('actionToWidgetize=getKeywords', 'actionToWidgetize=getPageUrls');
         await page.goto(newUrl);
-        await page.click('.dropdownConfigureIcon');
+        await page.click('.reportHeader__actionsTrigger');
         await page.click('.dataTableExcludeLowPopulation');
         await page.mouse.move(-10, -10);
         await page.waitForNetworkIdle();
