@@ -81,7 +81,8 @@ describe("ReportExporting", function () {
                 await page.waitForSelector('.ui-dialog');
                 await page.waitForNetworkIdle();
 
-                await page.click('.ui-dialog .reportHeader__actionsTrigger');
+                // no actions menu here: the row evolution popover renders the report without a
+                // report header, so the export has to stay reachable from the popover itself
                 await page.click('.ui-dialog .activateExportSelection');
             }
 
