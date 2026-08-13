@@ -367,17 +367,8 @@ export default defineComponent({
         .map((id) => this.allFooterIcons.find((button) => button.id === id))
         .filter((icon) => !!icon) as FooterIcon[];
     },
-    activeFooterIcon(): string|undefined {
-      return this.activeFooterIcons[0]?.icon;
-    },
     activeFooterIconIds(): string[] {
       return this.activeFooterIcons.map((icon) => icon.id);
-    },
-    numIcons(): number {
-      return this.allFooterIcons.length;
-    },
-    hasFooterIconsToShow(): boolean {
-      return !!this.activeFooterIcons.length && this.numIcons > 1;
     },
     reportFormats(): Record<string, string> {
       const formats: Record<string, string> = {
@@ -409,15 +400,6 @@ export default defineComponent({
     },
     showPercentageValuesConfigItem() {
       return !this.isDataTableEmpty && this.reportSupportsPercentageValues;
-    },
-    hasConfigItems() {
-      return this.showFlattenTable
-        || this.showDimensionsConfigItem
-        || this.showFlatConfigItem
-        || this.showTotalsConfigItem
-        || this.showExcludeLowPopulation
-        || this.showPivotBySubtable
-        || this.showPercentageValuesConfigItem;
     },
     flattenItemText() {
       const params = this.clientSideParameters as Record<string, string|number|boolean>;
@@ -480,21 +462,6 @@ export default defineComponent({
         'CoreHome_IncludeRowsWithLowPopulation',
         'CoreHome_ExcludeRowsWithLowPopulation',
       );
-    },
-    isAnyConfigureIconHighlighted() {
-      const params = this.clientSideParameters as Record<string, string|number|boolean>;
-      return isBooleanLikeSet(params.flat)
-        || isBooleanLikeSet(params.keep_totals_row)
-        || isBooleanLikeSet(params.include_aggregate_rows)
-        || isBooleanLikeSet(params.show_dimensions)
-        || isBooleanLikeSet(params.pivotBy)
-        || isBooleanLikeSet(params.enable_filter_excludelowpop)
-        || isBooleanLikeSet(params.show_percentage_values);
-    },
-    isTableView() {
-      return this.viewDataTable === 'table'
-        || this.viewDataTable === 'tableAllColumns'
-        || this.viewDataTable === 'tableGoals';
     },
   },
 });

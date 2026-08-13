@@ -1,25 +1,7 @@
-a.dropdownConfigureIcon.highlighted {
-  color: @theme-color-brand;
-}
-
-
-.tableConfiguration ul.open {
-  display: block;
-}
-
-.tableConfiguration div.configItem {
-  cursor: pointer;
-  padding: 16px;
-  line-height: 15px;
-  color: @theme-color-text-light;
-}
-
-.tableConfiguration div.configItem:hover {
-  background-color: @theme-color-background-tinyContrast;
-}
-
+// The config items are entries in the report header's actions menu, so `mtm-dropdownPanel__menuLink`
+// owns their box, colour and hover. Only the actionable half of each item is styled here: the entry
+// reads as the current state followed by the change it offers, and the link colour marks that half.
 .tableConfiguration div.configItem span.action {
   color: @theme-color-link;
-  padding-top: 8px;
   display: inline-block;
 }
